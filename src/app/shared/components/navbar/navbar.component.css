@@ -1,0 +1,24 @@
+mat-toolbar {
+  margin-bottom: 20px;
+}
+
+mat-toolbar > * span {
+  margin-left: 10px;
+}
+
+.content-wrapper {
+  width: 100%;
+  margin: auto;
+}
+
+.container-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.container {
+display: flex;
+flex-direction: row;
+align-items: center;
+}

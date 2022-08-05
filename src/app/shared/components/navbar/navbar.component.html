@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">
+    <div class="content-wrapper">
+      <div class="container-wrapper">
+        <div class="container">
+          <mat-icon>local_fire_department</mat-icon>
+          <span>Pheonix Prop Sheets</span>
+        </div>
+        <div class="container" *ngIf="(isLoggedIn$ | async)">
+          <button mat-button [matMenuTriggerFor]="profileMenu">
+            <img class="" src="{{((user$ | async)?.photoURL) ? (user$ | async)?.photoURL : '/assets/person.svg'}}">
+            <span>
+              Hello, {{((user$ | async)?.firstName) ? (user$ | async)?.firstName : 'User'}}
+            </span> 
+          </button>
+          <mat-menu #profileMenu="matMenu">
+            <button routerLink="/profile" mat-menu-item>Profile</button>
+            <button (click)="logout()" mat-menu-item>Logout</button>
+          </mat-menu>
+          
+        </div>
+      </div>
+      
+    </div>
+    <div>
+
+    </div>
+    
+  </mat-toolbar>

@@ -1,0 +1,27 @@
+
+<div class="content-wrapper">
+    <div class="container-wrapper">
+      <div class="container">
+        <h2>Profile</h2>
+        <mat-card>
+            <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+                <div class="form-container">
+                    <mat-form-field [hideRequiredMarker]="true">
+                        <mat-label>First Name</mat-label>
+                        <input matInput [value]="user?.firstName" formControlName="firstName">
+                    </mat-form-field>
+                    <mat-form-field [hideRequiredMarker]="true">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput [value]="user?.lastName" formControlName="lastName">
+                    </mat-form-field>
+                    <mat-form-field [hideRequiredMarker]="true">
+                        <mat-label>Email</mat-label>
+                        <input matInput type="email" [value]="user?.email" formControlName="email">
+                    </mat-form-field>
+                    <button mat-raised-button color="primary" type="submit">Update</button>
+                </div>
+            </form>
+        </mat-card>
+      </div>
+    </div>
+</div>
