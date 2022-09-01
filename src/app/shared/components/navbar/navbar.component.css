@@ -1,24 +1,20 @@
+
 mat-toolbar {
-  margin-bottom: 20px;
+  height: 75px;
+  padding: 0 80px;
 }
 
-mat-toolbar > * span {
-  margin-left: 10px;
+.button-group {
+  margin: 0 24px;
 }
 
-.content-wrapper {
-  width: 100%;
-  margin: auto;
-}
-
-.container-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.btn-nav {
+  margin: 0 12px;
 }
 
 .container {
-display: flex;
-flex-direction: row;
-align-items: center;
+  justify-content: space-between;
+}
+.logo {
+  max-height: 65px;
 }

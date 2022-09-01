@@ -1,104 +1,14 @@
-<div class="content-wrapper">
-    <button (click)="newTask()" mat-button>
-      <mat-icon>add</mat-icon> Add Task
-    </button>
-</div>
-  
-<div class="container-wrapper">
-  <div class="container">
-    <h2>Backlog</h2>
-
-    <mat-card
-      cdkDropList
-      id="todo"
-      #todoList="cdkDropList"
-      [cdkDropListData]="todo | async"
-      [cdkDropListConnectedTo]="[doneList, inProgressList]"
-      (cdkDropListDropped)="drop($event)"
-      class="list">
-      <p class="empty-label" *ngIf="(todo | async)?.length === 0">Empty list</p>
-      <app-task (edit)="editTask('todo', $event)" *ngFor="let task of todo | async" cdkDrag [task]="task"></app-task>
-    </mat-card>
-  </div>
-  
-  <div class="container">
-    <h2>In progress</h2>
-    <mat-card
-      cdkDropList
-      id="inProgress"
-      #inProgressList="cdkDropList"
-      [cdkDropListData]="inProgress | async"
-      [cdkDropListConnectedTo]="[todoList, doneList]"
-      (cdkDropListDropped)="drop($event)"
-      class="list">
-      <p class="empty-label" *ngIf="(inProgress | async)?.length === 0">Empty list</p>
-      <app-task (edit)="editTask('inProgress', $event)" *ngFor="let task of inProgress | async" cdkDrag [task]="task"></app-task>
-    </mat-card>
-  </div>
-  
-  <div class="container">
-    <h2>Done</h2>
-
-    <mat-card
-      cdkDropList
-      id="done"
-      #doneList="cdkDropList"
-      [cdkDropListData]="done | async"
-      [cdkDropListConnectedTo]="[todoList, inProgressList]"
-      (cdkDropListDropped)="drop($event)"
-      class="list">
-      <p class="empty-label" *ngIf="(done | async)?.length === 0">Empty list</p>
-      <app-task (edit)="editTask('done', $event)" *ngFor="let task of done | async" cdkDrag [task]="task"></app-task>
-    </mat-card>
-  </div>
-</div>
-<!-- Top navigation -->
-<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-sm-3 col-md-2 mr-0">
-    <img class="brand-logo" src="assets/logo-positronx-white.svg" alt="positronX.io Logo">
-  </a>
-</nav>
-<!-- Sidebar navigation -->
-<div class="container-fluid">
-  <div class="row">
-    <nav class="col-md-2 d-md-block bg-light sidebar">
-      <div class="sidebar-sticky">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active">
-              <i class="fas fa-user"></i>User Profile
-            </a>
-          </li>
-          <!-- Calling SignOut() Api from AuthService -->
-          <li class="nav-item">
-            <a class="nav-link" (click)="authService.SignOut()">
-              <i class="fas fa-sign-out-alt"></i>Log out
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-    <!-- Main content -->
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-      <div class="inner-adjust">
-        <div class="pt-3 pb-2 mb-3 border-bottom">
-          <h1 class="h2">User Profile</h1>
-        </div>
-        <!-- Show user data when logged in -->
-        <div class="row" *ngIf="user">
-          <div class="col-md-12">
-            <div class="media">
-              <img class="align-self-start mr-5 img-thumbnail rounded-circle" src="{{(user.photoURL) ? user.photoURL : '/assets/person.svg'}}"
-                alt="{{user.firstName}}">
-              <div class="media-body">
-                <h1>Hello: <strong>{{(user.firstName) ? user.firstName : 'User'}}</strong></h1>
-                <p>User ID: <strong>{{user.uid}}</strong></p>
-                <p>Email: <strong>{{user.email}}</strong></p>
-              </div>
-            </div>
+   <div class="container">
+      <mat-card>
+        <mat-card-title>Standings</mat-card-title>
+        <mat-card-content>
+          <div *ngIf="persons.length == 0">
+            <mat-card-content>No standings posted.</mat-card-content>
           </div>
-        </div>
-      </div>
-    </main>
-  </div>
-</div>
+            <mat-list role="list" *ngFor="let person of this.persons; let i = index" >
+              <mat-list-item>{{i + 1}}. {{person.name}}</mat-list-item>
+            </mat-list>
+        </mat-card-content>
+    </mat-card>
+   </div>
+

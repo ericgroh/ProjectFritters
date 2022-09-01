@@ -1,3 +1,5 @@
+import { RulesComponent } from './pages/rules/rules.component';
+import { AdminComponent } from './pages/admin/admin.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes, CanActivate } from '@angular/router';
@@ -13,12 +15,15 @@ import { AngularFireAuthGuard, redirectUnauthorizedTo } from '@angular/fire/comp
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['sign-in']);
 
 const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'rules', component: RulesComponent },
+
   { path: 'sign-in', component: SignInComponent },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email', component: VerifyEmailComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
-  { path: '', component: HomeComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
+  { path: 'admin', component: AdminComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
   { path: '**', component: PageNotFoundComponent }
 ];
 

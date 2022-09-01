@@ -13,11 +13,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
-import { TaskComponent } from './shared/components/task/task.component';
-import { TaskDialogComponent } from './shared/components/task-dialog/task-dialog.component';
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
-import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
@@ -30,12 +28,16 @@ import { VerifyEmailComponent } from './pages/verify-email/verify-email.componen
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { RulesComponent } from './pages/rules/rules.component';
+import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
+import { MatListModule } from '@angular/material/list';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    TaskComponent,
-    TaskDialogComponent,
     PageNotFoundComponent,
     NavbarComponent,
     HomeComponent,
@@ -43,7 +45,9 @@ import { ProfileComponent } from './pages/profile/profile.component';
     SignUpComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
-    ProfileComponent
+    ProfileComponent,
+    AdminComponent,
+    RulesComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -58,13 +62,15 @@ import { ProfileComponent } from './pages/profile/profile.component';
     MatInputModule,
     MatMenuModule,
     MatToolbarModule,
+    MatListModule,
     MatIconModule,
     ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideFirestore(() => getFirestore()),
-    AppRoutingModule
+    AppRoutingModule,
+    NgxExtendedPdfViewerModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

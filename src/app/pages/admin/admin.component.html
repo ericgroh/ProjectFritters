@@ -1,0 +1,11 @@
+<div class="container">
+  <mat-card>
+      <mat-card-title>Admin</mat-card-title>
+      <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let participant of participants" cdkDrag>
+          <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
+          {{participant.name}}
+        </div>
+      </div>
+  </mat-card>
+</div>

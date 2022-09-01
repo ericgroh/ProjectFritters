@@ -1,4 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { 
+    margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    background-image: linear-gradient(200deg, #0F2557, #3778C2, #7ED5EA);
+    color: white;
+}
+
+mat-card {
+    min-width: 500px;
+    margin: 25px;
+}
+
+mat-card-title {
+    text-align: center;
+}
+
+.container   {
+    width: 100%;
+    display: flex;    
+    justify-content: center;
+    align-items: center;
+}

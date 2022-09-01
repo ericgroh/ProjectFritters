@@ -14,23 +14,23 @@ export class NavbarComponent implements OnInit {
   user$: Observable<User>;
   isLoggedIn$: Observable<boolean>
   constructor(
-    private userService: UserService,
-    private authService: AuthService,
-    public router: Router
+    // private userService: UserService,
+    // private authService: AuthService,
+    // public router: Router
   ) { }
 
   ngOnInit(): void {
-    this.isLoggedIn$ = this.authService.IsLoggedIn();
-    console.log('initializing navbar', this.isLoggedIn$);
-    this.user$ = this.getUser();
+    // this.isLoggedIn$ = this.authService.IsLoggedIn();
+    // console.log('initializing navbar', this.isLoggedIn$);
+    // this.user$ = this.getUser();
   }
 
-  getUser(): Observable<User> {
-    return this.userService.getCurrentUser();
-  }
+  // getUser(): Observable<User> {
+  //   return this.userService.getCurrentUser();
+  // }
 
-  logout(): void {
-    this.authService.SignOut();
-  }
+  // logout(): void {
+  //   this.authService.SignOut();
+  // }
 
 }

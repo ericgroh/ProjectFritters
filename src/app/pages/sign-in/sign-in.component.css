@@ -1,16 +1,5 @@
-.content-wrapper {
-    max-width: 1400px;
-    margin: auto;
-}
-
-.container-wrapper {
-  display: flex;
-  justify-content: space-around;
-}
-
 .container {
-  width: 400px;
-  margin: 0 25px 25px 0;
+  justify-content: center;
 }
 
 .form-container {
