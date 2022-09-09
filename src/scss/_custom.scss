@@ -1,0 +1,55 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+$custom-palette: (
+    50: #e6e9f1,
+    100: #c0c8dc,
+    200: #97a5c5,
+    300: #6f82ad,
+    400: #50689d,
+    500: #304f8f,
+    600: #294786,
+    700: #213e7b,
+    800: #19356e,
+    900: #0F2557,
+    contrast: (
+        50: rgba(black, 0.87),
+        100: rgba(black, 0.87),
+        200: rgba(black, 0.87),
+        300: white,
+        400: white,
+        500: white,
+        600: white,
+        700: white,
+        800: white,
+        900: white
+    )
+);
+
+$custom-accent-palette: (
+    50: #e4f2fb,
+    100: #bedef6,
+    200: #98caf1,
+    300: #73b6ea,
+    400: #5aa6e6,
+    500: #4697e2,
+    600: #3f8ad5,
+    700: #3778c2,
+    800: #3067b0,
+    900: #254a90,
+    contrast: (
+        50: rgba(black, 0.87),
+        100: rgba(black, 0.87),
+        200: rgba(black, 0.87),
+        300: white,
+        400: white,
+        500: white,
+        600: white,
+        700: white,
+        800: white,
+        900: white
+    )
+);
+$primary: mat-palette($custom-palette);
+$accent:  mat-palette($custom-accent-palette);
+$warn:    mat-palette($mat-deep-orange, 300, 500, 800);
