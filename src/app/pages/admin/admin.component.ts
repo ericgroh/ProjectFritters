@@ -1,3 +1,4 @@
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { moveItemInArray, CdkDragDrop } from '@angular/cdk/drag-drop';
 import { Component, OnInit } from '@angular/core';
 
@@ -6,20 +7,24 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.css']
 })
-export class AdminComponent implements OnInit {
+export class AdminComponent {
   participants: Participant[] = [
     { id: 1, name: "jimmy" },
     { id: 2, name: "tom" }
   ]
+  form = new FormGroup({
+    firstName: new FormControl('', [
+      Validators.required
+    ]),
+    lastName: new FormControl('', [
+      Validators.required
+    ]),
+  })
   constructor() { }
 
-  ngOnInit(): void {
+  onSubmit() {
+    console.log(this.form.value);
   }
-
-  drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.participants, event.previousIndex, event.currentIndex);
-  }
-
 }
 
 export interface Participant {

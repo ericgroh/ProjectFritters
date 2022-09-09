@@ -20,7 +20,7 @@ const getObservable = (collection: AngularFirestoreCollection<Task>) => {
 export class AppComponent {
 
 
-  title = 'kanban-fire';
+  title = 'project-fritters';
   todo = getObservable(this.store.collection('todo')) as Observable<Task[]>;
   inProgress = getObservable(this.store.collection('inProgress')) as Observable<Task[]>;
   done = getObservable(this.store.collection('done')) as Observable<Task[]>;

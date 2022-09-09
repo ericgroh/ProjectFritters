@@ -11,6 +11,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
@@ -61,6 +62,7 @@ import { MatListModule } from '@angular/material/list';
     MatFormFieldModule,
     MatInputModule,
     MatMenuModule,
+    MatTableModule,
     MatToolbarModule,
     MatListModule,
     MatIconModule,

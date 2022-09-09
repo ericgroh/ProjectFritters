@@ -1,13 +1,12 @@
-
-<mat-toolbar [class.mat-elevation-z8]="true" color="white">
-  <div class="container">
-    <img class="logo" src="assets/1.png" alt="FHBets">
-    <div class="button-group">
-      <a class="btn-nav" mat-button href="/">Standings</a>
-      <a class="btn-nav" mat-button href="/rules">Rules</a>
-    </div>
-    <div class="button-group">
-
-    </div>
-  </div>
-</mat-toolbar>
+<nav class="navbar-header" [class.mat-elevation-z8]="true" >
+  <button mat-button routerLink="/">
+    <img class="logo" src="assets/dark.png" alt="FHBets">
+  </button>  
+  <button mat-button routerLink="/">Standings</button>
+  <button mat-button routerLink="/rules">Rules</button>
+  <div class="flex-spacer"></div>
+  <button mat-button>Login</button>
+</nav>
+<!-- <mat-toolbar class="fixed" [class.mat-elevation-z8]="true" color="white">
+  
+</mat-toolbar> -->

@@ -1,11 +1,29 @@
 <div class="container">
   <mat-card>
-      <mat-card-title>Admin</mat-card-title>
-      <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+      <mat-card-title>Update Scores</mat-card-title>
+      <!-- <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
         <div class="example-box" *ngFor="let participant of participants" cdkDrag>
           <div class="example-custom-placeholder" *cdkDragPlaceholder></div>
           {{participant.name}}
         </div>
-      </div>
+      </div> -->
+  </mat-card>
+  <mat-card>
+    <mat-card-title>Add New Player</mat-card-title>
+    <mat-card-content>
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+          <mat-label>First Name</mat-label>
+          <input matInput placeholder="First Name" formControlName="firstName">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Last Name</mat-label>
+          <input matInput placeholder="Last Name" formControlName="lastName">
+        </mat-form-field>
+        <mat-card-actions align="end">
+          <button [disabled]="!form.valid" mat-raised-button color="primary" type="submit">Add Player</button>
+        </mat-card-actions>
+      </form>
+    </mat-card-content>
   </mat-card>
 </div>

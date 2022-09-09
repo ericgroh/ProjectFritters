@@ -1,5 +1,16 @@
+.navbar-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 8px 16px;
+  background: #fafafa;
+}
 
-mat-toolbar {
+.logo {
+  height: 26px;
+}
+
+/* mat-toolbar {
   height: 75px;
   padding: 0 80px;
 }
@@ -18,3 +29,8 @@ mat-toolbar {
 .logo {
   max-height: 65px;
 }
+
+.fixed {
+  position: sticky;
+  display: block;
+} */

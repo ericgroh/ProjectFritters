@@ -1,14 +1,8 @@
 {
-  "targets": {
-    "kanbanfire-ba10d": {
-      "hosting": {
-        "kanban-fire": [
-          "kanbanfire-ba10d"
-        ]
-      }
-    }
-  },
   "projects": {
-    "default": "kanbanfire-ba10d"
-  }
+    "default": "fritters-ac05c",
+    "staging": "fritters-ac05c",
+    "production": "cfbdraft-prod"
+  },
+  "targets": {}
 }

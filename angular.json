@@ -6,7 +6,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "kanban-fire": {
+    "project-fritters": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/kanban-fire",
+            "outputPath": "dist/project-fritters",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -30,8 +30,7 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -72,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "kanban-fire:build:production"
+              "browserTarget": "project-fritters:build:production"
             },
             "development": {
-              "browserTarget": "kanban-fire:build:development"
+              "browserTarget": "project-fritters:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -83,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "kanban-fire:build"
+            "browserTarget": "project-fritters:build"
           }
         },
         "test": {
@@ -98,8 +97,7 @@
               "src/assets"
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.css"
+              "src/styles.scss"
             ],
             "scripts": []
           }
@@ -109,13 +107,18 @@
           "options": {
             "prerender": false,
             "ssr": false,
-            "browserTarget": "kanban-fire:build:production",
-            "firebaseProject": "kanbanfire-ba10d",
-            "firebaseHostingSite": "kanbanfire-ba10d"
+            "browserTarget": "project-fritters:build:production",
+            "firebaseProject": "fritters-ac05c",
+            "firebaseHostingSite": "fritters-ac05c"
           }
         }
       }
     }
   },
-  "defaultProject": "kanban-fire"
+  "schematics": {
+    "@schematics/angular:component": {
+      "style": "scss"
+    }
+  },
+  "defaultProject": "project-fritters"
 }
