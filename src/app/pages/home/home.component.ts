@@ -29,20 +29,22 @@ export class HomeComponent {
   // done = getObservable(this.store.collection('done')) as Observable<Task[]>;
 
   persons: Person[] = [
-    { position: 1, name: "Pam Friedman", score: 5.5 },
-    { position: 2, name: "Zack Joseph", score: 5 },
-    { position: 3, name: "Kevin Factor", score: 5 },
-    { position: 4, name: "Mike Chornak", score: 5 },
-    { position: 5, name: "Jarrod Kalish", score: 5 },
-    { position: 6, name: "Danny Karliak", score: 4.5 },
-    { position: 7, name: "Alex Friedman", score: 4.5 },
-    { position: 8, name: "Rome Crews", score: 4 },
-    { position: 9, name: "Richard Feldtz", score: 3.5 },
-    { position: 10, name: "Gavin Bridegum", score: 3.5 },
-    { position: 11, name: "Anthony Rangel", score: 3 },
-    { position: 12, name: "Dan Reilley", score: 3 },
-    { position: 13, name: "Rich Feldtz", score: 2.5 }
+    { position: 1, name: "Pam Friedman", score: 11.5 },
+    { position: 2, name: "Zack Joseph", score: 10 },
+    { position: 3, name: "Kevin Factor", score: 8 },
+    { position: 4, name: "Mike Chornak", score: 7.5 },
+    { position: 5, name: "Jarrod Kalish", score: 6.5 },
+    { position: 6, name: "Danny Karliak", score: 6.5 },
+    { position: 7, name: "Alex Friedman", score: 8 },
+    { position: 8, name: "Rome Crews", score: 8.5 },
+    { position: 9, name: "Richard Feldtz", score: 8 },
+    { position: 10, name: "Gavin Bridegum", score: 5 },
+    { position: 11, name: "Anthony Rangel", score: 7.5 },
+    { position: 12, name: "Dan Reilley", score: 9.5 },
+    { position: 13, name: "Rich Feldtz", score: 4 }
   ];
+
+  personsSorted = this.persons.sort((a, b) => b.score - a.score);
   constructor(
     private store: AngularFirestore,
     public authService: AuthService,

@@ -5,11 +5,16 @@
           <div *ngIf="persons.length == 0">
             <mat-card-content>No standings posted.</mat-card-content>
           </div>
-            <table mat-table [dataSource]="persons">
+            <table mat-table [dataSource]="personsSorted">
                 <!-- Position Column -->
-              <ng-container matColumnDef="position">
+              <!-- <ng-container matColumnDef="position">
                 <th mat-header-cell *matHeaderCellDef> No. </th>
                 <td mat-cell *matCellDef="let person"> {{person.position}} </td>
+              </ng-container> -->
+
+              <ng-container matColumnDef="position">
+                <th mat-header-cell *matHeaderCellDef> No. </th>
+                <td mat-cell *matCellDef="let index = index"> {{index + 1}} </td>
               </ng-container>
 
               <!-- Name Column -->
