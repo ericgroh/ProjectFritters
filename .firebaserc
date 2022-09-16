@@ -1,6 +1,5 @@
 {
   "projects": {
-    "default": "fritters-ac05c",
     "staging": "fritters-ac05c",
     "production": "cfbdraft-prod"
   },
