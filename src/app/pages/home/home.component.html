@@ -1,6 +1,7 @@
    <div class="container">
       <mat-card [class.mat-elevation-z8]="true">
-        <mat-card-title>Standings</mat-card-title>
+        <mat-card-title class="center-text">Standings</mat-card-title>
+        <mat-card-subtitle class="center-text">Week 3</mat-card-subtitle>
         <mat-card-content>
           <div *ngIf="persons.length == 0">
             <mat-card-content>No standings posted.</mat-card-content>
@@ -20,7 +21,7 @@
               <!-- Name Column -->
               <ng-container matColumnDef="name">
                 <th mat-header-cell *matHeaderCellDef> Name </th>
-                <td mat-cell *matCellDef="let person"> {{person.name}} </td>
+                <td mat-cell *matCellDef="let person"> {{person.firstName}} {{person.lastName}}</td>
               </ng-container>
 
               <!-- Score Column -->

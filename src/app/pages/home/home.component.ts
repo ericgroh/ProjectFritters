@@ -1,10 +1,9 @@
+import { Player } from './../../shared/models/player';
 import { Router } from '@angular/router';
 import { UserService } from './../../shared/services/user.service';
 import { User } from './../../shared/models/user';
-import { CdkDragDrop, transferArrayItem } from '@angular/cdk/drag-drop';
 import { Component } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
-import { MatDialog } from '@angular/material/dialog';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
@@ -28,20 +27,20 @@ export class HomeComponent {
   // inProgress = getObservable(this.store.collection('inProgress')) as Observable<Task[]>;
   // done = getObservable(this.store.collection('done')) as Observable<Task[]>;
 
-  persons: Person[] = [
-    { position: 1, name: "Pam Friedman", score: 11.5 },
-    { position: 2, name: "Zack Joseph", score: 10 },
-    { position: 3, name: "Kevin Factor", score: 8 },
-    { position: 4, name: "Mike Chornak", score: 7.5 },
-    { position: 5, name: "Jarrod Kalish", score: 6.5 },
-    { position: 6, name: "Danny Karliak", score: 6.5 },
-    { position: 7, name: "Alex Friedman", score: 8 },
-    { position: 8, name: "Rome Crews", score: 8.5 },
-    { position: 9, name: "Richard Feldtz", score: 8 },
-    { position: 10, name: "Gavin Bridegum", score: 5 },
-    { position: 11, name: "Anthony Rangel", score: 7.5 },
-    { position: 12, name: "Dan Reilley", score: 9.5 },
-    { position: 13, name: "Rich Feldtz", score: 4 }
+  persons: Player[] = [
+    { firstName: "Pam", lastName: "Friedman", score: 14 },
+    { firstName: "Zack", lastName: "Joseph", score: 13.5 },
+    { firstName: "Kevin", lastName: "Factor", score: 14.5 },
+    { firstName: "Mike", lastName: "Chornak", score: 11.5 },
+    { firstName: "Jarrod", lastName: "Kalish", score: 12 },
+    { firstName: "Danny", lastName: "Karliak", score: 13 },
+    { firstName: "Alex", lastName: "Friedman", score: 12 },
+    { firstName: "Rome", lastName: "Crews", score: 13.5 },
+    { firstName: "Richard", lastName: "Feldtz", score: 11.5 },
+    { firstName: "Gavin", lastName: "Bridegum", score: 10.5 },
+    { firstName: "Anthony", lastName: "Rangel", score: 11 },
+    { firstName: "Dan", lastName: "Reilley", score: 13 },
+    { firstName: "Rich", lastName: "Feldtz", score: 8 }
   ];
 
   personsSorted = this.persons.sort((a, b) => b.score - a.score);
@@ -66,9 +65,3 @@ export class HomeComponent {
 
 
 }
-
-export interface Person {
-  position: number,
-  name: string,
-  score: number
-};
