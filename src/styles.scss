@@ -50,12 +50,14 @@ form {
 }
 
 .mat-card {
-    margin: 50px;
+    margin: 25px;
     background-color: $white;
 }
 
 .mat-card-content {
     padding: 0 25px;
+    overflow-y: auto;
+    max-height: 60vh;
 }
 
 .mat-list-item {
@@ -63,7 +65,6 @@ form {
 }
 
 .mat-list-item-content {
-    width: 100%;
     display: flex;
     justify-content: space-between;
     gap: 10px;
@@ -92,8 +93,47 @@ form {
     text-align: center;
 }
 
-.container   {
-    width: 100%;
-    display: flex;    
-    justify-content: center;
+// .container   {
+//     width: 100%;
+//     display: flex;    
+//     justify-content: center;
+// }
+
+// .cards-container{
+//     display: flex;
+//     flex-direction: column;
+//     flex-wrap: wrap;
+//     align-content: center;
+//     max-height: 100vh;
+//   }
+
+@media only screen and (min-width: 800px) { // Wide screen
+    .cards-container{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+        max-height: 100vh;
+    }
+}
+
+@media only screen and (max-width: 800px) and (min-width: 375px) { // large phone / tablet
+    .cards-container{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+    }
+}
+@media only screen and (max-width: 375px) { // small phones
+    .mat-card-content {
+        padding: 0 10px;
+        overflow-y: auto;
+        max-height: 60vh;
+    }
+
+    .mat-table {
+        background-color: $white;
+        min-width: 175px;
+    }
 }
