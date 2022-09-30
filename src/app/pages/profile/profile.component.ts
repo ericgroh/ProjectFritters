@@ -10,15 +10,13 @@ import { async } from '@firebase/util';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
   profileForm!: FormGroup;
   user!: User;
   constructor(
     private userService: UserService,
     private fb: FormBuilder
-  ) {
-
-  }
+  ) { }
 
   ngOnInit(): void {
     this.buildForm();

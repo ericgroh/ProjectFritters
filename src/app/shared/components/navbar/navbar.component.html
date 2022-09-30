@@ -5,8 +5,5 @@
   <button mat-button routerLink="/">Standings</button>
   <button mat-button routerLink="/rules">Rules</button>
   <div class="flex-spacer"></div>
-  <!-- <button mat-button>Login</button> -->
+  <button *ngIf="isLoggedIn$ | async" mat-button (click)="logout()">Logout</button>
 </nav>
-<!-- <mat-toolbar class="fixed" [class.mat-elevation-z8]="true" color="white">
-  
-</mat-toolbar> -->
