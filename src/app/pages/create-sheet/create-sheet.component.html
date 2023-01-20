@@ -1,0 +1,58 @@
+<div class="cards-container">
+    <mat-card [class.mat-elevation-z8]="true">
+      <mat-card-title class="center-text">Create Sheet</mat-card-title>
+      <mat-card-content>
+        <mat-stepper linear #stepper>
+            <mat-step>
+              <form [formGroup]="form">
+                <ng-template matStepLabel>Sheet Name</ng-template>
+                <mat-form-field appearance="fill">
+                  <mat-label>Name</mat-label>
+                  <input matInput formControlName="name" placeholder="Name" required>
+                </mat-form-field>
+                <div>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step>
+              <form [formGroup]="form">
+                <ng-template matStepLabel>Time of Event</ng-template>
+                <mat-form-field appearance="fill">
+                  <mat-label>Time</mat-label>
+                  <input matInput type="datetime-local" formControlName="eventTime" placeholder="1/1/23"
+                         required>
+                </mat-form-field>
+                <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button matStepperNext>Next</button>
+                </div>
+              </form>
+            </mat-step>
+            <mat-step>
+                <form [formGroup]="form">
+                  <ng-template matStepLabel>Password</ng-template>
+                  <mat-form-field appearance="fill">
+                    <mat-label>Password</mat-label>
+                    <input matInput formControlName="password" placeholder="Password"
+                           required>
+                  </mat-form-field>
+                  <div>
+                    <button mat-button matStepperPrevious>Back</button>
+                    <button mat-button matStepperNext>Next</button>
+                  </div>
+                </form>
+              </mat-step>
+            <mat-step>
+                <ng-template matStepLabel>Done</ng-template>
+                <p>You are now done.</p>
+                <div>
+                  <button mat-button matStepperPrevious>Back</button>
+                  <button mat-button (click)="createSheet()">Create</button>
+                </div>
+              </mat-step>
+          </mat-stepper>
+      </mat-card-content>
+  </mat-card>
+ </div>
+
