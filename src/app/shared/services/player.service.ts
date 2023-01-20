@@ -4,14 +4,6 @@ import { Injectable } from '@angular/core';
 import { Player } from './../models/player';
 import { addDoc, collection, Firestore, writeBatch, doc, collectionData } from '@angular/fire/firestore';
 
-// const getObservable = (collection: CollectionReference<DocumentData>) => {
-//   const subject = new BehaviorSubject<Player[]>([]);
-//   collection.value({ idField: 'id' }).subscribe((val: Player[]) => {
-//     subject.next(val);
-//   });
-//   return subject;
-// }
-
 @Injectable({
   providedIn: 'root'
 })

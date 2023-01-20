@@ -28,21 +28,7 @@ export class HomeComponent {
   // inProgress = getObservable(this.store.collection('inProgress')) as Observable<Task[]>;
   // done = getObservable(this.store.collection('done')) as Observable<Task[]>;
 
-  players$: Observable<Player[]>;// = [
-  // { firstName: "Pam", lastName: "Friedman", score: 14 },
-  // { firstName: "Zack", lastName: "Joseph", score: 13.5 },
-  // { firstName: "Kevin", lastName: "Factor", score: 14.5 },
-  // { firstName: "Mike", lastName: "Chornak", score: 11.5 },
-  // { firstName: "Jarrod", lastName: "Kalish", score: 12 },
-  // { firstName: "Danny", lastName: "Karliak", score: 13 },
-  // { firstName: "Alex", lastName: "Friedman", score: 12 },
-  // { firstName: "Rome", lastName: "Crews", score: 13.5 },
-  // { firstName: "Richard", lastName: "Feldtz", score: 11.5 },
-  // { firstName: "Gavin", lastName: "Bridegum", score: 10.5 },
-  // { firstName: "Anthony", lastName: "Rangel", score: 11 },
-  // { firstName: "Dan", lastName: "Reilley", score: 13 },
-  // { firstName: "Rich", lastName: "Feldtz", score: 8 }
-  //];
+  players$: Observable<Player[]>;
 
   // personsSorted = this.players$.sort((a, b) => b.score - a.score);
   constructor(

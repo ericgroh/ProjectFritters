@@ -16,7 +16,7 @@ export class NavbarComponent implements OnInit {
   constructor(
     // private userService: UserService,
     private authService: AuthService,
-    // public router: Router
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -30,6 +30,11 @@ export class NavbarComponent implements OnInit {
 
   logout(): void {
     this.authService.SignOut();
+  }
+
+  login(): void {
+    this.router.navigate(['login']);
+
   }
 
 }

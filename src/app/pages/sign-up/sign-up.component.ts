@@ -26,7 +26,7 @@ export class SignUpComponent {
   onSubmit() {
     this.authService.SignUp(this.form.value.email, this.form.value.password)
       .then(data => {
-        let route = 'sign-in'
+        let route = 'login'
         console.log(data);
         this.router.navigate([route]);
       })

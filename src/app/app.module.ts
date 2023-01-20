@@ -21,7 +21,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { HomeComponent } from './pages/home/home.component';
-import { SignInComponent } from './pages/sign-in/sign-in.component';
+import { LoginComponent } from './pages/login/login.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { AuthService } from './shared/services/auth.service';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
@@ -33,6 +33,8 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { RulesComponent } from './pages/rules/rules.component';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { MatListModule } from '@angular/material/list';
+import { MatStepperModule } from '@angular/material/stepper';
+import { CreateSheetComponent } from './pages/create-sheet/create-sheet.component';
 
 
 
@@ -42,13 +44,14 @@ import { MatListModule } from '@angular/material/list';
     PageNotFoundComponent,
     NavbarComponent,
     HomeComponent,
-    SignInComponent,
+    LoginComponent,
     SignUpComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
     ProfileComponent,
     AdminComponent,
-    RulesComponent
+    RulesComponent,
+    CreateSheetComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -62,6 +65,7 @@ import { MatListModule } from '@angular/material/list';
     MatFormFieldModule,
     MatInputModule,
     MatMenuModule,
+    MatStepperModule,
     MatTableModule,
     MatToolbarModule,
     MatListModule,

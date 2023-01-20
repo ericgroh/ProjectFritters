@@ -2,8 +2,20 @@
   <button mat-button routerLink="/">
     <img class="logo" src="assets/dark.png" alt="FHBets">
   </button>  
+  <div *ngIf="isLoggedIn$ | async; then loggedIn; else signIn"></div>
+  
+</nav>
+
+<ng-template #loggedIn>
   <button mat-button routerLink="/">Standings</button>
   <button mat-button routerLink="/rules">Rules</button>
+  <button mat-button routerLink="/createSheet">Create Sheet</button>
+  <button mat-button routerLink="/join">Join Sheet</button>
+
   <div class="flex-spacer"></div>
-  <button *ngIf="isLoggedIn$ | async" mat-button (click)="logout()">Logout</button>
-</nav>
+  <button mat-button (click)="logout()">Logout</button>
+</ng-template>
+<ng-template #signIn>
+  <div class="flex-spacer"></div>
+  <button mat-button *ngIf="router.url != '/login'" (click)="login()">Sign in</button>
+</ng-template>

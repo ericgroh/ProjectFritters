@@ -8,7 +8,6 @@ import { Injectable } from '@angular/core';
 })
 export class UserService {
   usersRef: AngularFirestoreCollection<User>;
-  user!: User;
 
   constructor(
     private store: AngularFirestore,
