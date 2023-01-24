@@ -1,3 +1,4 @@
+import { PropDialogComponent } from 'src/app/shared/components/prop-dialog/prop-dialog.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { NgModule } from '@angular/core';
@@ -34,7 +35,10 @@ import { RulesComponent } from './pages/rules/rules.component';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { MatListModule } from '@angular/material/list';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatSelectModule } from '@angular/material/select';
 import { CreateSheetComponent } from './pages/create-sheet/create-sheet.component';
+import { SheetComponent } from './pages/sheet/sheet.component';
+import { JoinSheetComponent } from './pages/join-sheet/join-sheet.component';
 
 
 
@@ -51,7 +55,10 @@ import { CreateSheetComponent } from './pages/create-sheet/create-sheet.componen
     ProfileComponent,
     AdminComponent,
     RulesComponent,
-    CreateSheetComponent
+    CreateSheetComponent,
+    SheetComponent,
+    JoinSheetComponent,
+    PropDialogComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -66,6 +73,7 @@ import { CreateSheetComponent } from './pages/create-sheet/create-sheet.componen
     MatInputModule,
     MatMenuModule,
     MatStepperModule,
+    MatSelectModule,
     MatTableModule,
     MatToolbarModule,
     MatListModule,

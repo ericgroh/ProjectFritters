@@ -1,9 +1,7 @@
 import { User } from './../../shared/models/user';
 import { UserService } from './../../shared/services/user.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
-import { AuthService } from 'src/app/shared/services/auth.service';
 import { Component, OnInit } from '@angular/core';
-import { async } from '@firebase/util';
 
 @Component({
   selector: 'app-profile',

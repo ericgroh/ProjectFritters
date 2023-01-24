@@ -1,4 +1,4 @@
-import { User } from './../models/user';
+import { User } from './../models';
 import { Observable } from 'rxjs';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
 import { Injectable } from '@angular/core';
@@ -15,9 +15,19 @@ export class UserService {
     this.usersRef = this.store.collection('users');
   }
 
+  getCurrentUserId(): string {
+    let user: User = JSON.parse(localStorage.getItem(`user`)!);
+    return user.uid;
+  }
+
+  getCurrentUserName(): string {
+    let user: User = JSON.parse(localStorage.getItem(`user`)!);
+    return `${user.firstName} ${user.lastName}`;
+  }
+
   getCurrentUser(): Observable<User> {
     const user = JSON.parse(localStorage.getItem(`user`)!);
-    return this.store.collection('users').doc(user?.uid).valueChanges() as Observable<User>;
+    return this.usersRef.doc(user?.uid).valueChanges() as Observable<User>;
   }
 
   createUserData(data: any) {
@@ -26,6 +36,7 @@ export class UserService {
       firstName: '',
       lastName: '',
       email: data.email,
+      username: '',
       photoURL: '',
       isNew: true,
       isAdmin: false

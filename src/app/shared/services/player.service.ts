@@ -1,7 +1,7 @@
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
-import { Player } from './../models/player';
+import { Player } from './../models';
 import { addDoc, collection, Firestore, writeBatch, doc, collectionData } from '@angular/fire/firestore';
 
 @Injectable({

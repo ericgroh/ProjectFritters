@@ -1,5 +1,5 @@
+import { User } from './../models';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { User } from './../models/user';
 import { UserService } from './user.service';
 import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
@@ -22,10 +22,7 @@ export class AuthService {
     public ngZone: NgZone
   ) {
     this.auth.authState.subscribe(user => {
-      console.log("authState called", user?.emailVerified)
-
       if (user && user.emailVerified) {
-        console.log("setting localstorage")
         localStorage.setItem(`user`, JSON.stringify(user));
       }
       else {

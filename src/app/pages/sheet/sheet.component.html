@@ -1,0 +1,50 @@
+<div class="cards-container">
+    <mat-card [class.mat-elevation-z8]="true">
+      <mat-card-title class="center-text">Props</mat-card-title>
+      <mat-card-content>
+        <p>Name: {{ sheet?.name }} </p>
+        <p>Owner: {{ sheet?.ownerName }} </p>
+        <div *ngIf="sheet?.props?.length == 0; then noProps; else props"></div>
+
+        <ng-template #noProps>
+          No props added yet.
+          <button mat-raised-button (click)="addProp()" class="demo-button">Add Prop</button>
+        </ng-template>
+        <ng-template #props>
+            <button mat-raised-button (click)="addProp()" class="demo-button">
+              Add Prop
+            </button>
+            <button
+                mat-raised-button
+                [disabled]="!(sheet$ | async)?.props.length"
+                (click)="removeProp()"
+                class="demo-button">
+              Remove Prop
+            </button>
+            <table mat-table [dataSource]="sheet?.props">
+                <!-- Position Column -->
+                <!-- <ng-container matColumnDef="position">
+                    <th mat-header-cell *matHeaderCellDef> No. </th>
+                    <td mat-cell *matCellDef="let person"> {{person.position}} </td>
+                </ng-container> -->
+    
+                <ng-container matColumnDef="question">
+                    <th mat-header-cell *matHeaderCellDef> Question </th>
+                    <td mat-cell *matCellDef="let prop"> {{prop.question}}</td>
+                </ng-container>
+    
+                <!-- Name Column -->
+                <ng-container matColumnDef="type">
+                    <th mat-header-cell *matHeaderCellDef> Type </th>
+                    <td mat-cell *matCellDef="let prop">{{prop.type}}</td>
+                </ng-container>                
+    
+                <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+        </ng-template>
+        
+      </mat-card-content>
+  </mat-card>
+ </div>
+

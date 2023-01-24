@@ -1,0 +1,34 @@
+<div class="cards-container">
+    <mat-card [class.mat-elevation-z8]="true">
+      <mat-card-title class="center-text">Join</mat-card-title>
+      <mat-card-subtitle class="center-text">Week 10</mat-card-subtitle>
+      <mat-card-content>
+        <div *ngIf="sheets?.length == 0">
+          No available sheets.
+        </div>
+          <table mat-table [dataSource]="sheets">
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+              <th mat-header-cell *matHeaderCellDef> Name </th>
+              <td mat-cell *matCellDef="let sheet"> {{sheet.name}}</td>
+            </ng-container>
+
+            <!-- Score Column -->
+            <ng-container matColumnDef="owner">
+                <th mat-header-cell *matHeaderCellDef> Score </th>
+                <td mat-cell *matCellDef="let sheet"> {{sheet.ownerName}} </td>
+              </ng-container>
+              <!-- Score Column -->
+              <ng-container matColumnDef="join">
+                <th mat-header-cell *matHeaderCellDef> Join </th>
+                <td mat-cell *matCellDef="let sheet"><button mat-raised-button>Join</button></td>
+              </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          </table>
+      </mat-card-content>
+  </mat-card>
+ </div>
+
