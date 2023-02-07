@@ -31,11 +31,13 @@
             </mat-step>
             <mat-step>
                 <form [formGroup]="form">
-                  <ng-template matStepLabel>Password</ng-template>
+                  <ng-template matStepLabel>Visibility</ng-template>
                   <mat-form-field appearance="fill">
-                    <mat-label>Password</mat-label>
-                    <input matInput formControlName="password" placeholder="Password"
-                           required>
+                    <mat-label>Visibility</mat-label>
+                    <select matNativeControl formControlName="isPublic" required>
+                      <option value="true">Public</option>
+                      <option value="false">Private</option>
+                    </select>
                   </mat-form-field>
                   <div>
                     <button mat-button matStepperPrevious>Back</button>

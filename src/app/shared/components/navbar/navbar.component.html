@@ -1,14 +1,14 @@
-<nav class="navbar-header" [class.mat-elevation-z8]="true" >
+<mat-toolbar class="navbar-header" [class.mat-elevation-z8]="true" >
   <button mat-button routerLink="/">
     <img class="logo" src="assets/dark.png" alt="FHBets">
   </button>  
   <div *ngIf="isLoggedIn$ | async; then loggedIn; else signIn"></div>
   
-</nav>
+</mat-toolbar>
 
 <ng-template #loggedIn>
-  <button mat-button routerLink="/">Standings</button>
-  <button mat-button routerLink="/rules">Rules</button>
+  <!-- <button mat-button routerLink="/">Standings</button>
+  <button mat-button routerLink="/rules">Rules</button> -->
   <button mat-button routerLink="/create">Create Sheet</button>
   <button mat-button routerLink="/join">Join Sheet</button>
 

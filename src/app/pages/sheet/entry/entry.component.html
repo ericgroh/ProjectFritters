@@ -1,0 +1,16 @@
+<div class="cards-container">
+    <mat-card [class.mat-elevation-z8]="true">
+      <mat-card-title class="center-text">Entry for {{entry?.sheetName}}</mat-card-title>
+      <mat-card-subtitle class="entry-header">
+        <div class="header-item">Owner: {{entry?.sheetOwner}}</div>
+        <div class="flex-spacer"></div>
+        <div class="header-item">Event Time: {{convertTime(entry?.eventTime)}}</div>
+      </mat-card-subtitle>
+      <div>last updated at: {{convertTime(entry?.updatedAt)}}</div>
+      <mat-card-content>
+        <div class="props-wrapper">
+            <app-prop *ngFor="let prop of props" [prop]="prop" [disableBtn]="disableBtn()" (save)="saveEntryPropAnswer(prop, $event)"></app-prop>
+        </div>
+      </mat-card-content>
+  </mat-card>
+</div>

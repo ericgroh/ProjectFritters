@@ -1,6 +1,7 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { map, Observable } from 'rxjs';
-import { Sheet } from 'src/app/shared/models/sheet';
+import { map } from 'rxjs';
+import { Sheet } from 'src/app/shared/models';
 import { SheetService } from 'src/app/shared/services/sheet.service';
 
 @Component({
@@ -13,15 +14,22 @@ export class JoinSheetComponent implements OnInit {
   displayedColumns: string[] = ['name', 'owner', `join`];
 
   constructor(
-    private readonly sheetService: SheetService
+    private readonly sheetService: SheetService,
+    private readonly router: Router
   ) {
-    this.sheetService.getPublicSheets().snapshotChanges().pipe(
+    this.sheetService.getAvailableSheets().snapshotChanges().pipe(
       map(changes =>
-        changes.map(c => ({ id: c.payload.doc.id, ...c.payload.doc.data() }))
+        changes.map(c => ({ ...c.payload.doc.data() }))
       )
     ).subscribe(data => {
+      console.log(data);
       this.sheets = data
     });
+  }
+
+  joinSheet(sheet: Sheet) {
+    let entryId = this.sheetService.join(sheet);
+    this.router.navigate([`entries/${entryId}`]);
   }
 
   ngOnInit(): void {

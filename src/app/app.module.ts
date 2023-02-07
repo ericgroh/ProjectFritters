@@ -21,7 +21,7 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
-import { HomeComponent } from './pages/home/home.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { AuthService } from './shared/services/auth.service';
@@ -35,10 +35,19 @@ import { RulesComponent } from './pages/rules/rules.component';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { MatListModule } from '@angular/material/list';
 import { MatStepperModule } from '@angular/material/stepper';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSelectModule } from '@angular/material/select';
-import { CreateSheetComponent } from './pages/create-sheet/create-sheet.component';
-import { SheetComponent } from './pages/sheet/sheet.component';
-import { JoinSheetComponent } from './pages/join-sheet/join-sheet.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { CreateSheetComponent } from './pages/sheet/create/create-sheet.component';
+import { SheetComponent } from './pages/sheet/details/sheet-details.component';
+import { JoinSheetComponent } from './pages/sheet/join/join-sheet.component';
+import { UpdateSheetComponent } from './pages/sheet/update/update-sheet.component';
+import { SheetsComponent } from './shared/components/sheets/sheets.component';
+import { EntryComponent } from './pages/sheet/entry/entry.component';
+import { PropComponent } from './shared/components/prop/prop.component';
+import { PropButtonComponent } from './shared/components/prop-button/prop-button.component';
+import { EntriesComponent } from './shared/components/entries/entries.component';
+import { KeyComponent } from './pages/sheet/key/key.component';
 
 
 
@@ -47,7 +56,7 @@ import { JoinSheetComponent } from './pages/join-sheet/join-sheet.component';
     AppComponent,
     PageNotFoundComponent,
     NavbarComponent,
-    HomeComponent,
+    DashboardComponent,
     LoginComponent,
     SignUpComponent,
     ForgotPasswordComponent,
@@ -58,7 +67,14 @@ import { JoinSheetComponent } from './pages/join-sheet/join-sheet.component';
     CreateSheetComponent,
     SheetComponent,
     JoinSheetComponent,
-    PropDialogComponent
+    PropDialogComponent,
+    UpdateSheetComponent,
+    SheetsComponent,
+    EntryComponent,
+    PropComponent,
+    PropButtonComponent,
+    EntriesComponent,
+    KeyComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -78,6 +94,8 @@ import { JoinSheetComponent } from './pages/join-sheet/join-sheet.component';
     MatToolbarModule,
     MatListModule,
     MatIconModule,
+    MatExpansionModule,
+    MatProgressSpinnerModule,
     ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,

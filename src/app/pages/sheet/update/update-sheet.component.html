@@ -1,0 +1,80 @@
+<div class="cards-container">
+    <mat-card [class.mat-elevation-z8]="true">
+      <mat-card-title class="center-text">Props</mat-card-title>
+      <mat-card-content>
+        <p>Name: {{ sheet?.name }} </p>
+        <p>Owner: {{ sheet?.ownerName }} </p>
+        <!-- <div *ngIf="sheet?.props?.length == 0; then noProps; else props$"></div> -->
+        <!-- <ng-template #noProps>
+          No props added yet.
+          <button mat-raised-button (click)="addProp()" class="demo-button">Add Prop</button>
+        </ng-template>
+        <ng-template #props>
+            <div class="actions">
+              <div *ngIf="sheet?.status == status?.Pending">
+                <button mat-raised-button (click)="addProp()" class="demo-button">Add Prop</button>
+                <button mat-raised-button (click)="finalizeProps()" color="warn">Finalize Props</button>
+              </div>
+              
+            </div>  
+        </ng-template> -->
+        <!-- <ng-template #Pending>
+          <div cdkDropList (cdkDropListDropped)="drop($event)">
+            <div class="drag-drop-prop" *ngFor="let prop of sheet?.props" cdkDrag>
+              <div class="question">{{prop.question}}</div>
+              <div clsss="type">{{prop.type}}</div>
+              <div><button mat-raised-button>Remove</button></div>
+            </div>
+          </div>
+        </ng-template>
+        <ng-template #notPending>
+            <div class="prop" *ngFor="let prop of sheet?.props">
+              <div class="question">{{prop.question}}</div>
+              <div clsss="type">{{prop.type}}</div>
+            </div>
+        </ng-template> -->
+
+        <div [ngSwitch]="sheet?.status">
+          <div *ngSwitchCase="status.Pending">
+            <div cdkDropList (cdkDropListDropped)="drop($event)">
+              <div *ngIf="props?.length > 0">
+                <div class="drag-drop-prop" *ngFor="let prop of props" cdkDrag>
+                  <div class="question">{{prop.question}}</div>
+                  <div clsss="type">{{prop.type}}</div>
+                  <div><button mat-raised-button>Remove</button></div>
+                </div>
+                <button mat-raised-button (click)="addProp()" class="demo-button">Add Prop</button>
+                <button mat-raised-button (click)="finalizeProps()" color="warn">Finalize Props</button>
+              </div>
+              <button mat-raised-button (click)="addProp()" class="demo-button">Add Prop</button>
+            </div>
+          </div>
+          <div *ngSwitchCase="status.Finalized">
+            <div class="prop" *ngFor="let prop of props">
+              <div class="question">{{prop.question}}</div>
+              <div clsss="type">{{prop.type}}</div>
+            </div>
+          </div>
+          <div *ngSwitchCase="status.InProgress">
+            <div class="props-wrapper">
+              <app-prop *ngFor="let prop of props" class="propComponent" [prop]="prop" (save)="saveSheetPropAnswer(prop, $event)"></app-prop>
+            </div>
+            <div>
+              <button mat-raised-button (click)="completeKey()">Complete Key</button>
+            </div>
+          </div>
+          <div *ngSwitchCase="status.Completed">
+            <div class="props-wrapper">
+              <app-prop *ngFor="let prop of props" [prop]="prop" [disableBtn]="true" (save)="saveSheetPropAnswer(prop, $event)"></app-prop>
+            </div>
+            <div>
+              <button mat-raised-button (click)="GoToScoring()">Go to scoring page</button>
+            </div>
+          </div>
+          <div *ngSwitchDefault>Error</div>
+        </div>
+        
+      </mat-card-content>
+  </mat-card>
+ </div>
+

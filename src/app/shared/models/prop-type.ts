@@ -1,4 +1,8 @@
-export interface PropType {
-    name: string;
-    friendlyName: string;
+export enum PropType {
+    OverUnder,
+    YesNo,
+    EvenOdd,
+    TeamAorB,
+    Color,
+    WriteIn
 }

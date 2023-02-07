@@ -1,4 +1,5 @@
-import { User } from './../../shared/models/user';
+import { map } from 'rxjs';
+import { User } from './../../shared/models';
 import { UserService } from './../../shared/services/user.service';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -19,7 +20,9 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.buildForm();
 
-    this.userService.getCurrentUser().subscribe(user => {
+    this.userService.getCurrentUser().snapshotChanges().pipe(
+      map(c => ({ uid: c.payload.id, ...c.payload.data() }) as User)
+    ).subscribe(user => {
       this.user = user;
       this.profileForm.patchValue(user);
     });

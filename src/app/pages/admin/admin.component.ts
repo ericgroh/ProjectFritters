@@ -1,9 +1,8 @@
 import { map, Observable } from 'rxjs';
 import { PlayerService } from './../../shared/services/player.service';
-import { FormGroup, FormControl, Validators, FormArray, FormBuilder, FormGroupDirective } from '@angular/forms';
-import { moveItemInArray, CdkDragDrop } from '@angular/cdk/drag-drop';
+import { FormGroup, FormControl, FormArray, FormBuilder, FormGroupDirective } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { Player } from 'src/app/shared/models/player';
+import { Player } from 'src/app/shared/models';
 
 @Component({
   selector: 'app-admin',

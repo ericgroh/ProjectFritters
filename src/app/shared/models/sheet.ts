@@ -1,13 +1,14 @@
-import { Prop, UserAnswer } from '.';
+import { Prop, Status } from '.';
 
 export interface Sheet {
-    id?: string,
-    name?: string,
-    eventTime?: string,
-    password?: string,
-    ownerId?: string,
-    ownerName?: string
-    props?: Array<Prop>
-    joinedUserIds?: Array<UserAnswer>
-    isPublic?: boolean
+    id: string,
+    name: string,
+    eventTime: string,
+    password: string,
+    ownerId: string,
+    ownerName: string,
+    props: Array<Prop>,
+    participants: number
+    status: Status,
+    isPublic: boolean,
 };

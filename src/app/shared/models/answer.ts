@@ -1,4 +1,9 @@
+import { PropType, Choice } from 'src/app/shared/models';
+
 export interface Answer {
-    propId: string,
-    answer: string
+    id: string,
+    question: string,
+    type: PropType,
+    answer?: Choice,
+    isCorrect?: boolean,
 }
