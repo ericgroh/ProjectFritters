@@ -17,5 +17,5 @@
 </ng-template>
 <ng-template #signIn>
   <div class="flex-spacer"></div>
-  <button mat-button *ngIf="router.url != '/login'" (click)="login()">Sign in</button>
+  <button mat-button routerLink="/login">Sign in</button>
 </ng-template>
