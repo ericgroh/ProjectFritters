@@ -1,3 +1,4 @@
+import { UserService } from 'src/app/shared/services/user.service';
 import { Router } from '@angular/router';
 import { Sheet } from 'src/app/shared/models';
 import { Observable } from 'rxjs';
@@ -11,10 +12,11 @@ import * as moment from 'moment';
 })
 export class SheetsComponent implements OnInit {
   @Input() sheets$: Observable<Sheet[]>;
-  displayedColumns: string[] = ['name', 'time', `participants`, `status`, `actions`];
+  displayedColumns: string[] = ['name', 'time', `participants`, `status`];
 
   constructor(
-    private router: Router
+    private router: Router,
+    private userService: UserService,
   ) { }
 
   ngOnInit(): void {
@@ -48,6 +50,10 @@ export class SheetsComponent implements OnInit {
         break;
     }
     return status;
+  }
+
+  isOwner(ownerId: string): boolean {
+    return ownerId == this.userService.getCurrentUserId();
   }
 
   open(id: string) {

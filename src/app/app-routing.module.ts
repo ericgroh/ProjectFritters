@@ -1,10 +1,8 @@
 import { KeyComponent } from './pages/sheet/key/key.component';
-import { AuthGuard } from './auth.guard';
 import { UpdateSheetComponent } from './pages/sheet/update/update-sheet.component';
 import { SheetComponent } from './pages/sheet/details/sheet-details.component';
 import { CreateSheetComponent } from './pages/sheet/create/create-sheet.component';
 import { RulesComponent } from './pages/rules/rules.component';
-import { AdminComponent } from './pages/admin/admin.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
@@ -29,7 +27,6 @@ const routes: Routes = [
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email', component: VerifyEmailComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
-  { path: 'admin', component: AdminComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
   { path: 'create', component: CreateSheetComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
   { path: 'join', component: JoinSheetComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
   { path: 'sheets/:id', component: SheetComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },

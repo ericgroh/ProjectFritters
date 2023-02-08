@@ -56,11 +56,7 @@ form {
     min-width: 300px;
 }
 
-.mat-card {
-    margin: 25px;
-    background-color: $white;
-    min-width: 400px;
-}
+
 
 .mat-card-content {
     padding: 0 25px;
@@ -124,6 +120,10 @@ form {
         max-height: 100vh;
         padding: 50px;
     }
+    
+    mat-card {
+        width: 100%;
+    }
 }
 
 @media only screen and (max-width: 800px) and (min-width: 375px) { // large phone / tablet
@@ -132,6 +132,11 @@ form {
         flex-direction: column;
         flex-wrap: wrap;
         align-content: center;
+    }
+
+    .mat-card {
+        margin: 25px;
+        background-color: $white;
     }
 }
 @media only screen and (max-width: 375px) { // small phones
@@ -154,9 +159,7 @@ form {
 /// 
 /// 
 /// ///////////
-mat-card {
-    width: 100%;
-}
+
 
 table {
     width: 100%;
@@ -165,4 +168,8 @@ table {
 .props-wrapper {
     display: flex;
     flex-wrap: wrap;
+}
+
+.prop {
+    flex: 50%;
 }

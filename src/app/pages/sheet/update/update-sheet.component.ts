@@ -34,7 +34,6 @@ export class UpdateSheetComponent {
       this.sheetService.getSheet(this.sheetId).snapshotChanges().pipe(
         map(c => ({ id: c.payload.id, ...c.payload.data() } as Sheet))
       ).subscribe(data => {
-        console.log("data: ", data)
         this.checkStatus();
         this.sheet = data;
       });
@@ -78,40 +77,14 @@ export class UpdateSheetComponent {
   checkStatus() {
     if ((this.eventStarted() && this.sheet.status == Status.Pending) || (this.eventStarted() && this.sheet.status == Status.Finalized)) {
       this.sheet.status = this.sheet.status == Status.Pending ? Status.Expired : Status.InProgress;
-      console.log("updating status to: ", this.sheet.status);
       this.sheetService.update(this.sheet);
     }
   }
 
   saveSheetPropAnswer(prop: Prop, option: Choice) {
-    console.log("save answer");
     prop.answer = option;
     this.sheetService.updateSheetPropAnswer(this.sheetId, prop);
-    console.log("get Entries");
-    console.log(this.sheetId);
     this.sheetService.updateEntries(this.sheet.id, prop.id, prop.answer);
-
-    // tap(entries => {
-    //   console.log("entries: ", entries);
-    //   entries.forEach(entry => {
-    //     this.sheetService.getEntryProps(entry.id).valueChanges().pipe(
-    //       map(entryProps => {
-    //         let score = 0;
-    //         entryProps.forEach(entryProp => {
-    //           entryProp.isCorrect = (entryProp.answer == prop.answer);
-    //           if (entryProp.isCorrect) {
-    //             console.log("is correct");
-    //             score += 1;
-    //           }
-    //           this.sheetService.updateEntryAnswer(entry.id, entryProp);
-    //         })
-    //         entry.score = score;
-    //         this.sheetService.updateEntry(entry);
-    //       })
-    //     )
-    //   })
-    // })
-    //)
   }
 
   completeKey() {

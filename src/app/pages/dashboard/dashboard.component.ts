@@ -1,11 +1,8 @@
 import { SheetService } from 'src/app/shared/services/sheet.service';
 import { Sheet } from 'src/app/shared/models';
 import { UserService } from 'src/app/shared/services/user.service';
-import { PlayerService } from '../../shared/services/player.service';
 import { Player, User } from '../../shared/models';
-import { Router } from '@angular/router';
 import { Component } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Observable, map } from 'rxjs';
 import { AuthService } from 'src/app/shared/services/auth.service';
 

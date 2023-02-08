@@ -13,7 +13,6 @@ export class PropButtonComponent implements OnInit {
   constructor() { }
 
   select() {
-    console.log("emit");
     this.selected.emit(true);
   }
 

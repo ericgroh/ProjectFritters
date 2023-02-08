@@ -1,5 +1,4 @@
 import { User } from './../models';
-import { Observable } from 'rxjs';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import { Injectable } from '@angular/core';
 
@@ -15,7 +14,7 @@ export class UserService {
     this.usersRef = this.store.collection('users');
   }
 
-  getCurrentUserId(): any {
+  getCurrentUserId(): string {
     let user: User = JSON.parse(localStorage.getItem(`user`)!);
     return user.uid;
   }

@@ -36,7 +36,6 @@ export class CreateSheetComponent implements OnInit {
   }
 
   async createSheet() {
-    console.log(this.user)
     let sheet: Sheet = {
       ...this.form.value,
       ownerId: this.user.uid,

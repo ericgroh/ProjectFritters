@@ -30,7 +30,6 @@ import { VerifyEmailComponent } from './pages/verify-email/verify-email.componen
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { AdminComponent } from './pages/admin/admin.component';
 import { RulesComponent } from './pages/rules/rules.component';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { MatListModule } from '@angular/material/list';
@@ -62,7 +61,6 @@ import { KeyComponent } from './pages/sheet/key/key.component';
     ForgotPasswordComponent,
     VerifyEmailComponent,
     ProfileComponent,
-    AdminComponent,
     RulesComponent,
     CreateSheetComponent,
     SheetComponent,

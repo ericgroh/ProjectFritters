@@ -2,6 +2,7 @@
     <mat-card [class.mat-elevation-z8]="true">
       <mat-card-title class="center-text">Sheet Details</mat-card-title>
       <mat-card-content>
+        <button mat-raised-button [routerLink]="['update']">Manage</button>
         <p>Name: {{ sheet?.name }} </p>
         <p>Owner: {{ sheet?.ownerName }} </p>
         <p>Status: {{ getStatus(sheet?.status) }}</p>

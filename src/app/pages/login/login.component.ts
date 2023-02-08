@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   form = new FormGroup({
     email: new FormControl('', [
       Validators.email,
@@ -24,12 +24,17 @@ export class LoginComponent {
     private router: Router
   ) { }
 
+  ngOnInit(): void {
+    if (this.authService.CheckIsLoggedIn()) {
+      this.router.navigate(['']);
+    }
+  }
+
   onSubmit() {
     this.authService
       .SignIn(this.form.value.email, this.form.value.password)
       .then(data => {
         let route = '';
-        console.log(data);
         if (!data.user.emailVerified) {
           route = 'verify-email';
         }

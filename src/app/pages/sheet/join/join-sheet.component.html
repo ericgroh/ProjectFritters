@@ -1,11 +1,11 @@
 <div class="cards-container">
     <mat-card [class.mat-elevation-z8]="true">
-      <mat-card-title class="center-text">Join</mat-card-title>
-      <mat-card-subtitle class="center-text">Week 10</mat-card-subtitle>
+      <mat-card-title class="center-text">Available Sheets</mat-card-title>
       <mat-card-content>
-        <div *ngIf="sheets?.length == 0">
+        <div class="center-text" *ngIf="sheets?.length == 0; else noSheets">
           No available sheets.
         </div>
+        <ng-template #noSheets>
           <table mat-table [dataSource]="sheets">
 
             <!-- Name Column -->
@@ -30,6 +30,7 @@
             <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true"></tr>
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
           </table>
+        </ng-template>
       </mat-card-content>
   </mat-card>
  </div>

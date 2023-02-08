@@ -31,7 +31,7 @@ export class EntryComponent implements OnInit {
 
       this.sheetService.getEntryProps(this.entryId).snapshotChanges().pipe(
         map(changes => changes.map(c => ({ ...c.payload.doc.data() } as Prop)))
-      ).subscribe(props => { console.log("props: ", props); this.props = props })
+      ).subscribe(props => this.props = props);
     });
   }
 

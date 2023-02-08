@@ -37,8 +37,11 @@ export class AuthService {
       .then((data) => {
         if (data.user?.emailVerified) {
           this.emailVerified.next(true);
+          localStorage.setItem(`user`, JSON.stringify(data.user));
         }
+
         this.loginStatus.next(true);
+
         return data;
       });
   }
@@ -57,10 +60,7 @@ export class AuthService {
   SendVerificationMail(): Promise<void> {
     return this.auth.currentUser
       .then((u) => {
-        console.log(u);
-        u?.sendEmailVerification().then(x => {
-          console.log(x);
-        })
+        u?.sendEmailVerification();
       })
       .then(() => {
         this.router.navigate(['verify-email'])

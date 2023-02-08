@@ -22,7 +22,6 @@ export class JoinSheetComponent implements OnInit {
         changes.map(c => ({ ...c.payload.doc.data() }))
       )
     ).subscribe(data => {
-      console.log(data);
       this.sheets = data
     });
   }

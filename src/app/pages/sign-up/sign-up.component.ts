@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
   templateUrl: './sign-up.component.html',
   styleUrls: ['./sign-up.component.css']
 })
-export class SignUpComponent {
+export class SignUpComponent implements OnInit {
   form = new FormGroup({
     email: new FormControl('', [
       Validators.email,
@@ -23,11 +23,16 @@ export class SignUpComponent {
     private router: Router
   ) { }
 
+  ngOnInit(): void {
+    if (this.authService.CheckIsLoggedIn()) {
+      this.router.navigate(['']);
+    }
+  }
+
   onSubmit() {
     this.authService.SignUp(this.form.value.email, this.form.value.password)
       .then(data => {
         let route = 'login'
-        console.log(data);
         this.router.navigate([route]);
       })
   }

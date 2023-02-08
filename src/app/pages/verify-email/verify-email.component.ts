@@ -23,15 +23,9 @@ export class VerifyEmailComponent implements OnInit {
       this.user = data;
     });
 
-    // .snapshotChanges().pipe(
-    //   map(c => ({ id: c.payload.id, ...c.payload.data() }))
-    // ).subscribe(data => {
-    //   this.sheet = data;
-    // });
   }
 
   resendEmail(): void {
-    console.log('sending email');
-    this.authService.SendVerificationMail().then(data => console.log(data));
+    this.authService.SendVerificationMail();
   }
 }

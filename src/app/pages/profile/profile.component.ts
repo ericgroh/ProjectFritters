@@ -26,15 +26,11 @@ export class ProfileComponent implements OnInit {
       this.user = user;
       this.profileForm.patchValue(user);
     });
-    console.log(this.profileForm.value);
 
   }
 
   onSubmit(): Promise<void> {
-    console.log('current user', this.user);
-    console.log("profile", this.profileForm.value);
     let user = { ...this.user, ...this.profileForm.value, ...{ isNew: false } }
-    console.log(user);
     return this.userService.updateUser(user);
   }
 

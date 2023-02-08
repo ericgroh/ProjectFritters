@@ -12,7 +12,7 @@ import * as moment from 'moment';
 })
 export class EntriesComponent implements OnInit {
   public entries$: Observable<Entry[]>;
-  displayedColumns: string[] = ['sheetName', 'time', 'score', `action`];
+  displayedColumns: string[] = ['sheetName', 'time', 'score'];
   constructor(
     private sheetService: SheetService,
     private router: Router,
