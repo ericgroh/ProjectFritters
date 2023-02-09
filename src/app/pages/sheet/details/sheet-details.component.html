@@ -42,7 +42,7 @@
               <div class="example-element-detail"
                    [@detailExpand]="entry == expandedEntry ? 'expanded' : 'collapsed'">
                 <div class="props-wrapper">
-                  <app-prop *ngFor="let prop of props" [prop]="prop"></app-prop>
+                  <app-prop *ngFor="let prop of props" [disableBtn]="true" [prop]="prop"></app-prop>
                 </div>
               </div>
             </mat-cell>

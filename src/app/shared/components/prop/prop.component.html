@@ -21,7 +21,7 @@
             <!-- team code -->
         </div>
         <div *ngSwitchCase="propType.Color">
-            <!-- color code -->
+            <app-prop-select [disableBtn]="disableBtn" [selectedChoice]="prop.answer" (selected)="select($event)"></app-prop-select>
         </div>
         <div *ngSwitchCase="propType.WriteIn">
             <!-- write in -->

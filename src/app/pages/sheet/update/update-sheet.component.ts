@@ -85,6 +85,7 @@ export class UpdateSheetComponent {
     prop.answer = option;
     this.sheetService.updateSheetPropAnswer(this.sheetId, prop);
     this.sheetService.updateEntries(this.sheet.id, prop.id, prop.answer);
+
   }
 
   completeKey() {

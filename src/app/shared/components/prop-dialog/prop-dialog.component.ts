@@ -10,14 +10,21 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./prop-dialog.component.scss']
 })
 export class PropDialogComponent implements OnInit {
-  public propTypes$: Observable<PropType[]>;
+  // public propTypes = PropType;
+  propTypes = [
+    { value: PropType.OverUnder, viewValue: "Over/Under" },
+    { value: PropType.EvenOdd, viewValue: "Even/Odd" },
+    { value: PropType.YesNo, viewValue: "Yes/No" },
+    { value: PropType.Color, viewValue: "Color" },
+    // { value: PropType.TeamAorB, viewValue: "This Team or that"},
+  ]
 
   constructor(
     public dialogRef: MatDialogRef<PropDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: Prop,
     private sheetService: SheetService
   ) {
-    this.propTypes$ = this.sheetService.propTypes$;
+
   }
 
   ngOnInit(): void {

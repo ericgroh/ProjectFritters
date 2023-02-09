@@ -47,6 +47,7 @@ import { PropComponent } from './shared/components/prop/prop.component';
 import { PropButtonComponent } from './shared/components/prop-button/prop-button.component';
 import { EntriesComponent } from './shared/components/entries/entries.component';
 import { KeyComponent } from './pages/sheet/key/key.component';
+import { PropSelectComponent } from './shared/components/prop-select/prop-select.component';
 
 
 
@@ -73,6 +74,7 @@ import { KeyComponent } from './pages/sheet/key/key.component';
     PropButtonComponent,
     EntriesComponent,
     KeyComponent,
+    PropSelectComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
