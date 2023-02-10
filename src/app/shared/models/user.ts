@@ -1,9 +1,10 @@
 export interface User {
     uid: string,
     email: string,
-    firstName: string,
-    lastName: string,
-    photoURL: string,
-    isAdmin: boolean,
-    isNew: boolean
+    username?: string,
+    firstName?: string,
+    lastName?: string,
+    photoURL?: string,
+    isAdmin?: boolean,
+    isNew?: boolean
 }

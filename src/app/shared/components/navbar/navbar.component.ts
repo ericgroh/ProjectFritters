@@ -1,9 +1,8 @@
 import { Observable } from 'rxjs';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { User } from '../../models/user';
+import { User } from '../../models';
 import { AuthService } from '../../services/auth.service';
-import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -16,7 +15,7 @@ export class NavbarComponent implements OnInit {
   constructor(
     // private userService: UserService,
     private authService: AuthService,
-    // public router: Router
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -24,12 +23,13 @@ export class NavbarComponent implements OnInit {
     // this.user$ = this.getUser();
   }
 
-  // getUser(): Observable<User> {
-  //   return this.userService.getCurrentUser();
-  // }
-
   logout(): void {
     this.authService.SignOut();
+  }
+
+  login(): void {
+    this.router.navigate(['login']);
+
   }
 
 }

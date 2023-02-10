@@ -1,0 +1,69 @@
+<div class="cards-container">
+    <mat-card [class.mat-elevation-z8]="true">
+      <mat-card-title class="center-text">Sheet Details</mat-card-title>
+      <mat-card-content>
+        <button mat-raised-button [routerLink]="['update']">Manage</button>
+        <p>Name: {{ sheet?.name }} </p>
+        <p>Owner: {{ sheet?.ownerName }} </p>
+        <p>Status: {{ getStatus(sheet?.status) }}</p>
+
+        <mat-table
+          [dataSource]="entries" multiTemplateDataRows
+          class="mat-elevation-z8">
+
+          <ng-container matColumnDef="index">
+            <mat-header-cell *matHeaderCellDef> Rank </mat-header-cell>
+            <mat-cell *matCellDef="let entry; let i = dataIndex;">{{i + 1}}</mat-cell>
+          </ng-container>
+    
+          <ng-container matColumnDef="user">
+            <mat-header-cell *matHeaderCellDef> User </mat-header-cell>
+            <mat-cell *matCellDef="let entry"> {{entry.userName}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="score">
+            <mat-header-cell *matHeaderCellDef>Score</mat-header-cell>
+            <mat-cell *matCellDef="let entry"> {{entry.score}} </mat-cell>
+          </ng-container>
+          <ng-container matColumnDef="tieBreakerScore">
+            <mat-header-cell *matHeaderCellDef>Tie Breaker Score</mat-header-cell>
+            <mat-cell *matCellDef="let entry"> {{entry.tieBreakerScore}} </mat-cell>
+          </ng-container>
+
+
+          <ng-container matColumnDef="expand">
+            <mat-header-cell *matHeaderCellDef aria-label="row actions">&nbsp;</mat-header-cell>
+            <mat-cell *matCellDef="let entry">
+              <button mat-icon-button aria-label="expand row" (click)="getEntryProps(entry.id); (expandedEntry = expandedEntry === entry ? null : entry); $event.stopPropagation()">
+                <mat-icon *ngIf="expandedEntry !== entry">keyboard_arrow_down</mat-icon>
+                <mat-icon *ngIf="expandedEntry === entry">keyboard_arrow_up</mat-icon>
+              </button>
+            </mat-cell>
+          </ng-container>
+
+          <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+          <ng-container matColumnDef="expandedDetail">
+            <mat-cell *matCellDef="let entry" [attr.colspan]="columnsToDisplayWithExpand.length">
+              <div class="example-element-detail" [@detailExpand]="entry == expandedEntry ? 'expanded' : 'collapsed'">
+                <h2>Props</h2>
+                <div class="props-wrapper">
+                  <app-prop *ngFor="let prop of props" [disableBtn]="true" [prop]="prop"></app-prop>
+                </div>
+                <h2>Tie Breaker</h2>
+                <div class="props-wrapper">
+                  <app-prop [disableBtn]="true" [prop]="entry.tieBreaker"></app-prop>
+                </div>
+              </div>
+            </mat-cell>
+          </ng-container>
+
+          <mat-header-row *matHeaderRowDef="columnsToDisplayWithExpand"></mat-header-row>
+          <mat-row *matRowDef="let entry; columns: columnsToDisplayWithExpand;"
+              class="example-element-row"
+              [class.example-expanded-row]="expandedEntry === entry"
+              (click)="expandedEntry = expandedEntry === entry ? null : entry">
+          </mat-row>
+          <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+        </mat-table>
+      </mat-card-content>
+  </mat-card>
+ </div>

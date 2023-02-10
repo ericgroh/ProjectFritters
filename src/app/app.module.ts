@@ -1,3 +1,4 @@
+import { PropDialogComponent } from 'src/app/shared/components/prop-dialog/prop-dialog.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { NgModule } from '@angular/core';
@@ -20,8 +21,8 @@ import { provideFirestore, getFirestore } from '@angular/fire/firestore';
 import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { NavbarComponent } from './shared/components/navbar/navbar.component';
-import { HomeComponent } from './pages/home/home.component';
-import { SignInComponent } from './pages/sign-in/sign-in.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { LoginComponent } from './pages/login/login.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { AuthService } from './shared/services/auth.service';
 import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
@@ -29,10 +30,25 @@ import { VerifyEmailComponent } from './pages/verify-email/verify-email.componen
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ProfileComponent } from './pages/profile/profile.component';
-import { AdminComponent } from './pages/admin/admin.component';
 import { RulesComponent } from './pages/rules/rules.component';
 import { NgxExtendedPdfViewerModule } from 'ngx-extended-pdf-viewer';
 import { MatListModule } from '@angular/material/list';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { MatSelectModule } from '@angular/material/select';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { CreateSheetComponent } from './pages/sheet/create/create-sheet.component';
+import { SheetComponent } from './pages/sheet/details/sheet-details.component';
+import { JoinSheetComponent } from './pages/sheet/join/join-sheet.component';
+import { UpdateSheetComponent } from './pages/sheet/update/update-sheet.component';
+import { SheetsComponent } from './shared/components/sheets/sheets.component';
+import { EntryComponent } from './pages/sheet/entry/entry.component';
+import { PropComponent } from './shared/components/prop/prop.component';
+import { PropButtonComponent } from './shared/components/prop-button/prop-button.component';
+import { EntriesComponent } from './shared/components/entries/entries.component';
+import { KeyComponent } from './pages/sheet/key/key.component';
+import { PropSelectComponent } from './shared/components/prop-select/prop-select.component';
+import { PropNumberComponent } from './shared/components/prop-number/prop-number.component';
 
 
 
@@ -41,14 +57,26 @@ import { MatListModule } from '@angular/material/list';
     AppComponent,
     PageNotFoundComponent,
     NavbarComponent,
-    HomeComponent,
-    SignInComponent,
+    DashboardComponent,
+    LoginComponent,
     SignUpComponent,
     ForgotPasswordComponent,
     VerifyEmailComponent,
     ProfileComponent,
-    AdminComponent,
-    RulesComponent
+    RulesComponent,
+    CreateSheetComponent,
+    SheetComponent,
+    JoinSheetComponent,
+    PropDialogComponent,
+    UpdateSheetComponent,
+    SheetsComponent,
+    EntryComponent,
+    PropComponent,
+    PropButtonComponent,
+    EntriesComponent,
+    KeyComponent,
+    PropSelectComponent,
+    PropNumberComponent,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebase),
@@ -62,10 +90,14 @@ import { MatListModule } from '@angular/material/list';
     MatFormFieldModule,
     MatInputModule,
     MatMenuModule,
+    MatStepperModule,
+    MatSelectModule,
     MatTableModule,
     MatToolbarModule,
     MatListModule,
     MatIconModule,
+    MatExpansionModule,
+    MatProgressSpinnerModule,
     ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,

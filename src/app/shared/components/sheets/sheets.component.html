@@ -1,0 +1,42 @@
+<div class="cards-container">
+  <mat-card>
+    <mat-card-title class="center-text">My Sheets</mat-card-title>
+    <div *ngIf="sheets.length == 0; then noSheets; else sheets"></div>
+  </mat-card>
+</div>
+
+
+<ng-template #noSheets>No Sheets</ng-template>
+<ng-template #sheets>
+    <table mat-table [dataSource]="sheets$">
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef> Name </th>
+          <td mat-cell *matCellDef="let sheet">
+            <a [routerLink]="['/sheets', sheet.id]"> {{sheet.name}} </a>
+        </ng-container>
+    
+        <ng-container matColumnDef="time">
+            <th mat-header-cell *matHeaderCellDef> Time </th>
+            <td mat-cell *matCellDef="let sheet"> {{convertTime(sheet.eventTime)}} </td>
+          </ng-container>
+
+          <ng-container matColumnDef="participants">
+            <th mat-header-cell *matHeaderCellDef> Participants </th>
+            <td mat-cell *matCellDef="let sheet">{{sheet.participants}}</td>
+          </ng-container>
+          
+          <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef> Status </th>
+            <td mat-cell *matCellDef="let sheet">{{getStatus(sheet?.status)}}</td>
+          </ng-container>
+    
+          <!-- <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef> Actions </th>
+            <td mat-cell *matCellDef="let sheet">
+              <button *ngIf="isOwner(sheet.ownerId)" mat-raised-button >Manage</button>
+            </td>
+          </ng-container> -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+</ng-template>

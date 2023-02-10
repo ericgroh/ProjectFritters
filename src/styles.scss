@@ -30,13 +30,20 @@ app-navbar {
     z-index: 2;
 }
 
-app-home, 
+app-dashboard, 
 app-rules, 
 app-sign-up, 
-app-sign-in,
-app-admin {
+app-login,
+app-admin,
+app-create-sheet,
+app-sheet,
+app-join-sheet,
+app-dashboard,
+app-entry,
+app-sheet,
+app-key {
     position: relative;
-    top: 52px;
+    top: 64px;
 }
 
 form {
@@ -49,10 +56,7 @@ form {
     min-width: 300px;
 }
 
-.mat-card {
-    margin: 25px;
-    background-color: $white;
-}
+
 
 .mat-card-content {
     padding: 0 25px;
@@ -114,6 +118,11 @@ form {
         flex-wrap: wrap;
         align-content: center;
         max-height: 100vh;
+        padding: 50px;
+    }
+    
+    mat-card {
+        width: 100%;
     }
 }
 
@@ -123,6 +132,11 @@ form {
         flex-direction: column;
         flex-wrap: wrap;
         align-content: center;
+    }
+
+    .mat-card {
+        margin: 25px;
+        background-color: $white;
     }
 }
 @media only screen and (max-width: 375px) { // small phones
@@ -136,4 +150,26 @@ form {
         background-color: $white;
         min-width: 175px;
     }
+}
+
+
+
+
+//////////////
+/// 
+/// 
+/// ///////////
+
+
+table {
+    width: 100%;
+}
+
+.props-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.prop {
+    flex: 50%;
 }

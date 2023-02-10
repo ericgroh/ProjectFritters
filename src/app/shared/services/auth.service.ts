@@ -1,5 +1,5 @@
+import { User } from './../models';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { User } from './../models/user';
 import { UserService } from './user.service';
 import { Injectable, NgZone } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
@@ -22,10 +22,7 @@ export class AuthService {
     public ngZone: NgZone
   ) {
     this.auth.authState.subscribe(user => {
-      console.log("authState called", user?.emailVerified)
-
       if (user && user.emailVerified) {
-        console.log("setting localstorage")
         localStorage.setItem(`user`, JSON.stringify(user));
       }
       else {
@@ -40,8 +37,11 @@ export class AuthService {
       .then((data) => {
         if (data.user?.emailVerified) {
           this.emailVerified.next(true);
+          localStorage.setItem(`user`, JSON.stringify(data.user));
         }
+
         this.loginStatus.next(true);
+
         return data;
       });
   }
@@ -60,10 +60,7 @@ export class AuthService {
   SendVerificationMail(): Promise<void> {
     return this.auth.currentUser
       .then((u) => {
-        console.log(u);
-        u?.sendEmailVerification().then(x => {
-          console.log(x);
-        })
+        u?.sendEmailVerification();
       })
       .then(() => {
         this.router.navigate(['verify-email'])
@@ -94,7 +91,7 @@ export class AuthService {
     return this.auth.signOut().then(() => {
       this.loginStatus.next(false);
       localStorage.removeItem('user');
-      this.router.navigate(['sign-in']);
+      this.router.navigate(['login']);
     });
   }
 }

@@ -1,0 +1,32 @@
+<div class="prop-wrapper">
+    <div class="prop-question">
+        {{prop?.question}}
+    </div>
+    <div class="flex-spacer"></div>
+    <container-element [ngSwitch]="prop?.type">
+        <!-- the same view can be shown in more than one case -->
+        <some-element class="test2" *ngSwitchCase="propType.OverUnder">
+            <app-prop-button btnText="Over" [disableBtn]="disableBtn" [isSelected]="isSelected(choice.Over)" (selected)="select(choice.Over)"></app-prop-button>
+            <app-prop-button btnText="Under" [disableBtn]="disableBtn" [isSelected]="isSelected(choice.Under)" (selected)="select(choice.Under)"></app-prop-button>
+        </some-element>
+        <some-element *ngSwitchCase="propType.YesNo">
+            <app-prop-button btnText="Yes" [disableBtn]="disableBtn" [isSelected]="isSelected(choice.Yes)" (selected)="select(choice.Yes)"></app-prop-button>
+            <app-prop-button btnText="No" [disableBtn]="disableBtn" [isSelected]="isSelected(choice.No)" (selected)="select(choice.No)"></app-prop-button>
+        </some-element>
+        <some-other-element *ngSwitchCase="propType.EvenOdd">
+            <app-prop-button btnText="Even" [disableBtn]="disableBtn" [isSelected]="isSelected(choice.Even)" (selected)="select(choice.Even)"></app-prop-button>
+            <app-prop-button btnText="Odd" [disableBtn]="disableBtn" [isSelected]="isSelected(choice.Odd)" (selected)="select(choice.Odd)"></app-prop-button>
+        </some-other-element>
+        <div *ngSwitchCase="propType.TeamAorB">
+            <!-- team code -->
+        </div>
+        <div *ngSwitchCase="propType.Color">
+            <app-prop-select [disableBtn]="disableBtn" [selectedChoice]="prop.answer" (selected)="select($event)"></app-prop-select>
+        </div>
+        <div *ngSwitchCase="propType.Number">
+            <app-prop-number [disableBtn]="disableBtn" [currentAnswer]="prop.answer" (selected)="numberAnswer($event)"></app-prop-number>
+        </div>
+            <!--default case when there are no matches -->
+        <some-element *ngSwitchDefault>...</some-element>
+      </container-element>
+</div>

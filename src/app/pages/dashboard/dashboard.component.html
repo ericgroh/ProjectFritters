@@ -1,0 +1,23 @@
+   <div class="container">
+    <mat-toolbar>
+      <h1>Dashboard</h1>
+      <div class="flex-spacer"></div>
+      <div>
+        <button mat-button (click)="showTable(table.sheets)">My Sheets</button>
+        <button mat-button (click)="showTable(table.entries)">My Entries</button>
+      </div>
+      <div class="flex-spacer"></div>
+      <button mat-raised-button color="white" routerLink="/create">Create a sheet</button>
+    </mat-toolbar>
+   </div>
+
+   <container-element class="test1" [ngSwitch]="show">
+    <some-element *ngSwitchCase="table.entries">
+       <app-entries></app-entries>
+    </some-element>
+    <!--default case when there are no matches -->
+    <some-element *ngSwitchDefault>
+      <app-sheets [sheets$]="sheets$" *ngIf="sheets$"></app-sheets>
+    </some-element>
+  </container-element>
+

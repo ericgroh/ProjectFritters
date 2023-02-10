@@ -1,0 +1,10 @@
+<!-- <mat-form-field class="example-form-field">
+<mat-label>Number</mat-label>
+<input matInput type="number" (input)="save($event)" [value]="getCurrentValue()">
+</mat-form-field> -->
+
+<mat-form-field>
+    <mat-label>Number</mat-label>
+    <input type="number" matInput [formControl]="answerFormControl" (input)="save()">
+
+  </mat-form-field>
