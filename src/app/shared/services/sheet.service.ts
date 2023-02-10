@@ -55,6 +55,7 @@ export class SheetService {
 
   addProp(sheet: Sheet, prop: Prop) {
     prop.id = this.afs.createId();
+    prop.position = 0;
     return this.sheetsCollection.doc(sheet.id).collection<Prop>("props").doc(prop.id).set(prop);
   }
 
