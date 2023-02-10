@@ -66,7 +66,12 @@ export class UpdateSheetComponent {
   removeProp() { }
 
   drop(event: CdkDragDrop<string[]>) {
-    moveItemInArray(this.sheet.props, event.previousIndex, event.currentIndex);
+
+    moveItemInArray(this.props, event.previousIndex, event.currentIndex);
+    this.props.forEach((prop, index) => {
+      prop.position = index;
+      this.sheetService.updateSheetProp(this.sheetId, prop);
+    })
   }
 
   eventStarted() {
@@ -82,7 +87,7 @@ export class UpdateSheetComponent {
 
   saveSheetPropAnswer(prop: Prop, option: Choice) {
     prop.answer = option;
-    this.sheetService.updateSheetPropAnswer(this.sheetId, prop);
+    this.sheetService.updateSheetProp(this.sheetId, prop);
     this.sheetService.updateEntries(this.sheet.id, prop.id, prop.answer);
 
   }

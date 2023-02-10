@@ -7,4 +7,5 @@ export interface Prop {
     type: PropType,
     answer?: Choice,
     isCorrect?: boolean
+    position?: number,
 }

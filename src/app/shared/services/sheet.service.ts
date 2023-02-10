@@ -55,6 +55,7 @@ export class SheetService {
 
   addProp(sheet: Sheet, prop: Prop) {
     prop.id = this.afs.createId();
+    prop.position = 0;
     return this.sheetsCollection.doc(sheet.id).collection<Prop>("props").doc(prop.id).set(prop);
   }
 
@@ -64,10 +65,10 @@ export class SheetService {
   }
 
   getProps(sheetId: string): AngularFirestoreCollection<Prop> {
-    return this.sheetsCollection.doc(sheetId).collection<Prop>("props");
+    return this.sheetsCollection.doc(sheetId).collection<Prop>("props", ref => ref.orderBy('position'));
   }
 
-  updateSheetPropAnswer(sheetId: string, prop: Prop) {
+  updateSheetProp(sheetId: string, prop: Prop) {
     this.afs.collection<Sheet>("sheets").doc(sheetId).collection<Answer>("props").doc(prop.id).update(prop);
   }
 
@@ -123,7 +124,7 @@ export class SheetService {
   }
 
   getEntryProps(entryId: string): AngularFirestoreCollection<Prop> {
-    return this.afs.collection<Entry>("entries").doc(entryId).collection<Prop>("props");
+    return this.afs.collection<Entry>("entries").doc(entryId).collection<Prop>("props", ref => ref.orderBy('position'));
   }
 
   updateEntry(entry: Entry) {
