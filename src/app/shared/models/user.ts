@@ -6,5 +6,5 @@ export interface User {
     lastName?: string,
     photoURL?: string,
     isAdmin?: boolean,
-    isNew?: boolean
+    isNew: boolean
 }

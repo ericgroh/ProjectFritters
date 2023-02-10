@@ -17,11 +17,11 @@ export class VerifyEmailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.userService.getCurrentUser().snapshotChanges().pipe(
-      map(c => ({ uid: c.payload.id, ...c.payload.data() }) as User)
-    ).subscribe(data => {
-      this.user = data;
-    });
+    // this.userService.getCurrentUser().snapshotChanges().pipe(
+    //   map(c => ({ uid: c.payload.id, ...c.payload.data() }) as User)
+    // ).subscribe(data => {
+    //   this.user = data;
+    // });
 
   }
 
