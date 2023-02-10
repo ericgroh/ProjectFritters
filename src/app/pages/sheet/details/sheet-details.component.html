@@ -24,6 +24,10 @@
             <mat-header-cell *matHeaderCellDef>Score</mat-header-cell>
             <mat-cell *matCellDef="let entry"> {{entry.score}} </mat-cell>
           </ng-container>
+          <ng-container matColumnDef="tieBreakerScore">
+            <mat-header-cell *matHeaderCellDef>Tie Breaker Score</mat-header-cell>
+            <mat-cell *matCellDef="let entry"> {{entry.tieBreakerScore}} </mat-cell>
+          </ng-container>
 
 
           <ng-container matColumnDef="expand">
@@ -39,10 +43,14 @@
           <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
           <ng-container matColumnDef="expandedDetail">
             <mat-cell *matCellDef="let entry" [attr.colspan]="columnsToDisplayWithExpand.length">
-              <div class="example-element-detail"
-                   [@detailExpand]="entry == expandedEntry ? 'expanded' : 'collapsed'">
+              <div class="example-element-detail" [@detailExpand]="entry == expandedEntry ? 'expanded' : 'collapsed'">
+                <h2>Props</h2>
                 <div class="props-wrapper">
                   <app-prop *ngFor="let prop of props" [disableBtn]="true" [prop]="prop"></app-prop>
+                </div>
+                <h2>Tie Breaker</h2>
+                <div class="props-wrapper">
+                  <app-prop [disableBtn]="true" [prop]="entry.tieBreaker"></app-prop>
                 </div>
               </div>
             </mat-cell>
@@ -56,54 +64,6 @@
           </mat-row>
           <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
         </mat-table>
-        <!-- <mat-accordion>
-            <mat-expansion-panel hideToggle *ngFor="let entry of entries" (opened)="getEntryProps(entry.id)">
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  {{entry.id}}
-                </mat-panel-title>
-                <mat-panel-description>
-                  Score: {{entry.score}}
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              <mat-spinner *ngIf="loading"></mat-spinner>
-              <app-prop *ngFor="let prop of props" [prop]="prop" [disableBtn]="true" (save)="saveSheetPropAnswer(prop, $event)"></app-prop>
-
-            </mat-expansion-panel>
-        </mat-accordion> -->
       </mat-card-content>
   </mat-card>
  </div>
-<!-- 
-
- <div class="cards-container">
-    <mat-card [class.mat-elevation-z8]="true">
-      <mat-card-title class="center-text">Props</mat-card-title>
-      <mat-card-content>
-        <p>Name: {{ sheet?.name }} </p>
-        <p>Owner: {{ sheet?.ownerName }} </p>
-        <div *ngIf="sheet?.props?.length == 0; then noProps; else props"></div>
-
-        <ng-template #noProps>
-          No props added yet.
-        </ng-template>
-        <ng-template #props>
-            
-            <div cdkDropList (cdkDropListDropped)="drop($event)">
-              <div class="example-box" *ngFor="let prop of sheet?.props" cdkDrag>
-                <div class="question">{{prop.question}}</div>
-                <div clsss="type">{{prop.type}}</div>
-                <div *ngIf="!sheet?.isFinalized"><button mat-raised-button>Remove</button></div>
-              </div>
-            </div>
-            <div *ngIf="!sheet?.isFinalized" class="actions">
-              <button mat-raised-button (click)="addProp()" class="demo-button">Add Prop</button>
-              <button mat-raised-button (click)="finalizeProps()" color="warn">Finalize Props</button>
-            </div>
-            
-        </ng-template>
-        
-      </mat-card-content>
-  </mat-card>
- </div>
- -->

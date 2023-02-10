@@ -1,3 +1,4 @@
+import { Prop } from 'src/app/shared/models';
 import { Answer } from '.';
 
 export interface Entry {
@@ -11,4 +12,6 @@ export interface Entry {
     score: number,
     updatedAt: string,
     rank: number
+    tieBreaker: Prop,
+    tieBreakerScore: number
 }

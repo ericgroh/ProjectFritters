@@ -40,12 +40,17 @@ export class EntryComponent implements OnInit {
     this.sheetService.updateEntryAnswer(this.entryId, prop);
   }
 
+  saveTieBreaker(option: number) {
+    this.entry.tieBreaker.answer = option;
+    this.sheetService.updateEntry(this.entry);
+  }
+
   convertTime(time: string): string {
     return moment(time).calendar();
   }
 
   disableBtn() {
-    return new Date().getTime() >= new Date(this.entry.eventTime).getTime();
+    return new Date().getTime() >= new Date(this.entry?.eventTime).getTime();
   }
 
 }

@@ -58,6 +58,11 @@ export class SheetService {
     return this.sheetsCollection.doc(sheet.id).collection<Prop>("props").doc(prop.id).set(prop);
   }
 
+  addTieBreaker(sheet: Sheet, prop: Prop) {
+    sheet.tieBreaker = prop;
+    return this.sheetsCollection.doc(sheet.id).update(sheet);
+  }
+
   getProps(sheetId: string): AngularFirestoreCollection<Prop> {
     return this.sheetsCollection.doc(sheetId).collection<Prop>("props");
   }
@@ -84,6 +89,8 @@ export class SheetService {
             sheetName: sheet.name,
             sheetOwner: sheet.ownerName,
             eventTime: sheet.eventTime,
+            tieBreaker: sheet.tieBreaker,
+            tieBreakerScore: 0,
             score: 0,
             rank: -1,
             updatedAt: new Date().toISOString()
@@ -164,6 +171,17 @@ export class SheetService {
             batch.commit().then(() => console.log("success")).catch(err => console.log("error", err));
           }
         })
+      })
+    })
+  }
+
+  updateEntriesTieBreaker(sheetId: string, answer: number) {
+    this.afs.collection<Entry>("entries", ref => ref.where(`sheetId`, `==`, sheetId)).ref.get().then(querySnapshot => {
+      let entries = querySnapshot.docs;
+      entries.map(entrySnapshot => {
+        let entry: Entry = entrySnapshot.data();
+        entry.tieBreakerScore = Math.abs((entry.tieBreaker.answer || 0) - answer);
+        this.afs.collection<Entry>("entries").doc(entry.id).update(entry);
       })
     })
   }

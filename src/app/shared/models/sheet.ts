@@ -11,4 +11,5 @@ export interface Sheet {
     participants: number
     status: Status,
     isPublic: boolean,
+    tieBreaker: Prop
 };

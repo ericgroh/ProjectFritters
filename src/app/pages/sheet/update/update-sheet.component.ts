@@ -55,7 +55,6 @@ export class UpdateSheetComponent {
       if (result != null) {
         this.sheetService.addProp(this.sheet, result as Prop);
       }
-
     });
   }
 
@@ -95,6 +94,30 @@ export class UpdateSheetComponent {
 
   GoToScoring() {
     this.router.navigate([`sheets/${this.sheet.id}`]);
+  }
+
+  hasTieBreaker(): boolean {
+    return this.sheet.tieBreaker != null;
+  }
+
+  addTieBreaker() {
+    const dialogRef = this.dialog.open(PropDialogComponent, {
+      data: { question: this.question, type: this.type },
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result != null) {
+        this.sheetService.addTieBreaker(this.sheet, result as Prop);
+      }
+    });
+  }
+
+  saveTieBreakerAnswer(answer: number) {
+    console.log("saving tie breaker")
+    this.sheet.tieBreaker.answer = answer;
+    this.sheetService.update(this.sheet);
+    this.sheetService.updateEntriesTieBreaker(this.sheet.id, answer);
+
   }
 
 }

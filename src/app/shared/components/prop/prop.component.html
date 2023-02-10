@@ -3,7 +3,7 @@
         {{prop?.question}}
     </div>
     <div class="flex-spacer"></div>
-    <container-element [ngSwitch]="prop.type">
+    <container-element [ngSwitch]="prop?.type">
         <!-- the same view can be shown in more than one case -->
         <some-element class="test2" *ngSwitchCase="propType.OverUnder">
             <app-prop-button btnText="Over" [disableBtn]="disableBtn" [isSelected]="isSelected(choice.Over)" (selected)="select(choice.Over)"></app-prop-button>
@@ -23,8 +23,8 @@
         <div *ngSwitchCase="propType.Color">
             <app-prop-select [disableBtn]="disableBtn" [selectedChoice]="prop.answer" (selected)="select($event)"></app-prop-select>
         </div>
-        <div *ngSwitchCase="propType.WriteIn">
-            <!-- write in -->
+        <div *ngSwitchCase="propType.Number">
+            <app-prop-number [disableBtn]="disableBtn" [currentAnswer]="prop.answer" (selected)="numberAnswer($event)"></app-prop-number>
         </div>
             <!--default case when there are no matches -->
         <some-element *ngSwitchDefault>...</some-element>

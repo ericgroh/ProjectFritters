@@ -23,6 +23,10 @@ export class PropComponent implements OnInit {
     return this.prop.answer == option;
   }
 
+  numberAnswer(answer: number) {
+    return this.save.emit(answer);
+  }
+
   ngOnInit(): void {
     console.log(this.prop)
   }

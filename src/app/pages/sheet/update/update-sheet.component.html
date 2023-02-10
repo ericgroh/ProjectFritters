@@ -43,22 +43,32 @@
                   <div clsss="type">{{prop.type}}</div>
                   <div><button mat-raised-button>Remove</button></div>
                 </div>
-                <button mat-raised-button (click)="addProp()" class="demo-button">Add Prop</button>
-                <button mat-raised-button (click)="finalizeProps()" color="warn">Finalize Props</button>
+                <button mat-raised-button (click)="addProp()">Add Prop</button>
+                <button *ngIf="!hasTieBreaker()" mat-raised-button (click)="addTieBreaker()">Add Tie Breaker</button>
+                <button *ngIf="hasTieBreaker()" mat-raised-button (click)="finalizeProps()" color="warn">Finalize Props</button>
               </div>
               <button mat-raised-button (click)="addProp()" class="demo-button">Add Prop</button>
             </div>
           </div>
           <div *ngSwitchCase="status.Finalized">
+            <h2>Props</h2>
             <div class="prop" *ngFor="let prop of props">
               <div class="question">{{prop.question}}</div>
               <div clsss="type">{{prop.type}}</div>
             </div>
+            <h2>Tie Breaker</h2>
+            <div class="prop tie-breaker">
+              <div class="question">{{sheet.tieBreaker.question}}</div>
+              <div clsss="type">{{sheet.tieBreaker.type}}</div>
+            </div>
           </div>
           <div *ngSwitchCase="status.InProgress">
+            <h2>Props</h2>
             <div class="props-wrapper">
               <app-prop *ngFor="let prop of props" class="propComponent" [prop]="prop" (save)="saveSheetPropAnswer(prop, $event)"></app-prop>
             </div>
+            <h2>Tie Breaker</h2>
+            <app-prop [prop]="sheet.tieBreaker" (save)=saveTieBreakerAnswer($event)></app-prop>
             <div>
               <button mat-raised-button (click)="completeKey()">Complete Key</button>
             </div>

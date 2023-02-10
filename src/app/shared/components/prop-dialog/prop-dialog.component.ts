@@ -16,6 +16,7 @@ export class PropDialogComponent implements OnInit {
     { value: PropType.EvenOdd, viewValue: "Even/Odd" },
     { value: PropType.YesNo, viewValue: "Yes/No" },
     { value: PropType.Color, viewValue: "Color" },
+    { value: PropType.Number, viewValue: "Number" }
     // { value: PropType.TeamAorB, viewValue: "This Team or that"},
   ]
 

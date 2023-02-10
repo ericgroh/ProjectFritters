@@ -4,5 +4,6 @@ export enum PropType {
     EvenOdd,
     TeamAorB,
     Color,
-    WriteIn
+    WriteIn,
+    Number
 }

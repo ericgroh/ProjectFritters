@@ -30,7 +30,7 @@ export class SheetComponent {
   isOwner: boolean;
   props: Prop[];
   loading: boolean = false;
-  columnsToDisplayWithExpand = ['index', 'user', 'score', 'expand'];
+  columnsToDisplayWithExpand = ['index', 'user', 'score', 'tieBreakerScore', 'expand'];
   expandedEntry: Entry | null;
 
   constructor(
