@@ -1,3 +1,6 @@
+import { map } from 'rxjs';
+import { User } from 'src/app/shared/models';
+import { UserService } from 'src/app/shared/services/user.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -21,6 +24,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     public authService: AuthService,
+    public userService: UserService,
     private router: Router
   ) { }
 
@@ -34,11 +38,17 @@ export class LoginComponent implements OnInit {
     this.authService
       .SignIn(this.form.value.email, this.form.value.password)
       .then(data => {
-        let route = '';
         if (!data.user.emailVerified) {
-          route = 'verify-email';
+          this.router.navigate(['verify-email']);
         }
-        this.router.navigate([route]);
+        this.userService.getCurrentUser().snapshotChanges().pipe(
+          map(c => ({ ...c.payload.data() }) as User)
+        ).subscribe(user => {
+          if (user.isNew) {
+            this.router.navigate(['profile']);
+          }
+        });
+
       })
       .catch(error => console.log(error));
   }

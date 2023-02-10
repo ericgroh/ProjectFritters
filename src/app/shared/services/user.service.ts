@@ -26,11 +26,11 @@ export class UserService {
 
   createUserData(data: any) {
     const user: User = {
-      uid: data.id,
+      uid: data.uid,
       firstName: '',
       lastName: '',
       email: data.email,
-      username: '',
+      username: data.displayName,
       photoURL: '',
       isNew: true,
       isAdmin: false
