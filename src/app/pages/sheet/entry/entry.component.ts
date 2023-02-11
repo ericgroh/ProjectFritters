@@ -49,7 +49,7 @@ export class EntryComponent implements OnInit {
     return moment(time).calendar();
   }
 
-  disableBtn() {
+  isLocked() {
     return new Date().getTime() >= new Date(this.entry?.eventTime).getTime();
   }
 

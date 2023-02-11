@@ -3,18 +3,18 @@
       <mat-card-title class="center-text">Entry for {{entry?.sheetName}}</mat-card-title>
       <mat-card-subtitle class="entry-header">
         <div class="header-item">Owner: {{entry?.sheetOwner}}</div>
-        <div class="flex-spacer"></div>
         <div class="header-item">Event Time: {{convertTime(entry?.eventTime)}}</div>
+        <button mat-raised-button *ngIf="isLocked()" class="header-item" [routerLink]="['/sheets', entry?.sheetId]">Go to Standings</button>
       </mat-card-subtitle>
       <div class="center-text">last updated at: {{convertTime(entry?.updatedAt)}}</div>
       <mat-card-content>
         <h2>Props</h2>
         <div class="props-wrapper">
-            <app-prop class="prop" *ngFor="let prop of props" [prop]="prop" [disableBtn]="disableBtn()" (save)="saveEntryPropAnswer(prop, $event)"></app-prop>
+            <app-prop class="prop" *ngFor="let prop of props" [prop]="prop" [disableBtn]="isLocked()" (save)="saveEntryPropAnswer(prop, $event)"></app-prop>
         </div>
         <h2>Tie Breaker</h2>
         <div class="tieBreaker-wrapper">
-            <app-prop [prop]="entry?.tieBreaker" [disableBtn]="disableBtn()" (save)="saveTieBreaker($event)"></app-prop>
+            <app-prop [prop]="entry?.tieBreaker" [disableBtn]="isLocked()" (save)="saveTieBreaker($event)"></app-prop>
         </div>
       </mat-card-content>
   </mat-card>
