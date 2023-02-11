@@ -47,6 +47,10 @@ export class LoginComponent implements OnInit {
           if (user.isNew) {
             this.router.navigate(['profile']);
           }
+          else {
+            this.router.navigate(['']);
+
+          }
         });
 
       })
