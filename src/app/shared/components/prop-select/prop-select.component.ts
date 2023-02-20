@@ -23,7 +23,6 @@ export class PropSelectComponent implements OnInit {
   constructor() { }
 
   select(event: any) {
-    console.log("emit: ", event.vaue);
     this.selected.emit(event.value);
   }
 

@@ -28,7 +28,6 @@ export class PropComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.prop)
   }
 
 }

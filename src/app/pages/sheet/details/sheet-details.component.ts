@@ -54,7 +54,14 @@ export class SheetComponent {
     this.sheetService.getEntries(this.sheetId).snapshotChanges().pipe(
       map(changes => changes.map(c => ({ ...c.payload.doc.data() }) as Entry))
     ).subscribe(entries => {
-      this.entries = entries.sort((a, b) => (b.score - a.score));
+      this.entries = entries.sort((a, b) => {
+        if (a.score == b.score) {
+          return a.tieBreakerScore - b.tieBreakerScore
+        }
+        else {
+          return b.score - a.score
+        }
+      });
 
     })
   };

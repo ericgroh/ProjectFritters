@@ -31,7 +31,7 @@ export class SignUpComponent implements OnInit {
 
   onSubmit() {
     this.authService.SignUp(this.form.value.email, this.form.value.password)
-      .then(data => {
+      .then(() => {
         let route = 'login'
         this.router.navigate([route]);
       })

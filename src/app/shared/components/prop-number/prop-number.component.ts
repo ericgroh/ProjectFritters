@@ -16,7 +16,6 @@ export class PropNumberComponent implements OnInit {
 
   save() {
     if (!this.disableBtn) {
-      console.log("emit: ", this.answerFormControl.value);
       this.selected.emit(this.answerFormControl.value);
     }
     else {
@@ -31,10 +30,7 @@ export class PropNumberComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("current answer", this.currentAnswer);
     this.answerFormControl = new FormControl({ value: this.currentAnswer, disabled: this.disableBtn })
-
-    // this.answerFormControl.setValu(this.currentAnswer);
   }
 
 }

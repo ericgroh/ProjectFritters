@@ -10,7 +10,7 @@ export interface Entry {
     sheetOwner: string,
     eventTime: string,
     score: number,
-    updatedAt: string,
+    updatedAt: number,
     rank: number
     tieBreaker: Prop,
     tieBreakerScore: number

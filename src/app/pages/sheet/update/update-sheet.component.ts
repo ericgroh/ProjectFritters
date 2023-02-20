@@ -85,18 +85,14 @@ export class UpdateSheetComponent implements OnInit {
   // }
 
   checkStatus() {
-    console.log("checking status");
     const started = new Date().getTime() >= new Date(this.sheet?.eventTime).getTime();
     if (started && this.sheet.status == Status.Pending) {
-      console.log("expired")
       this.sheet.status = Status.Expired;
       this.sheetService.update(this.sheet);
     } else if (started && this.sheet.status == Status.Finalized) {
-      console.log("in progress");
       this.sheet.status = Status.InProgress;
       this.sheetService.update(this.sheet);
     } else {
-      console.log("setting timeout")
       setTimeout(this.checkStatus, 3000);
     }
   }

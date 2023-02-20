@@ -1,3 +1,4 @@
+import { NewUserGuard } from './shared/new-user.guard';
 import { KeyComponent } from './pages/sheet/key/key.component';
 import { UpdateSheetComponent } from './pages/sheet/update/update-sheet.component';
 import { SheetComponent } from './pages/sheet/details/sheet-details.component';
@@ -20,19 +21,19 @@ import { EntryComponent } from './pages/sheet/entry/entry.component';
 const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['login']);
 
 const routes: Routes = [
-  { path: '', component: DashboardComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
+  { path: '', component: DashboardComponent, canActivate: [AngularFireAuthGuard, NewUserGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
   { path: 'rules', component: RulesComponent },
   { path: 'login', component: LoginComponent },
   { path: 'sign-up', component: SignUpComponent },
   { path: 'forgot-password', component: ForgotPasswordComponent },
   { path: 'verify-email', component: VerifyEmailComponent },
   { path: 'profile', component: ProfileComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
-  { path: 'create', component: CreateSheetComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
-  { path: 'join', component: JoinSheetComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
-  { path: 'sheets/:id', component: SheetComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
-  { path: 'sheets/:id/update', component: UpdateSheetComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
-  { path: 'entries/:id', component: EntryComponent, canActivate: [AngularFireAuthGuard], data: { AuthGuardPipe: redirectUnauthorizedToLogin } },
-  { path: 'keys/:id', component: KeyComponent, canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
+  { path: 'create', component: CreateSheetComponent, canActivate: [AngularFireAuthGuard, NewUserGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
+  { path: 'join', component: JoinSheetComponent, canActivate: [AngularFireAuthGuard, NewUserGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
+  { path: 'sheets/:id', component: SheetComponent, canActivate: [AngularFireAuthGuard, NewUserGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
+  { path: 'sheets/:id/update', component: UpdateSheetComponent, canActivate: [AngularFireAuthGuard, NewUserGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
+  { path: 'entries/:id', component: EntryComponent, canActivate: [AngularFireAuthGuard, NewUserGuard], data: { AuthGuardPipe: redirectUnauthorizedToLogin } },
+  { path: 'keys/:id', component: KeyComponent, canActivate: [AngularFireAuthGuard, NewUserGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
 
   { path: '**', component: PageNotFoundComponent }
 ];

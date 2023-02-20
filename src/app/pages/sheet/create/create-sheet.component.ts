@@ -38,6 +38,7 @@ export class CreateSheetComponent implements OnInit {
   async createSheet() {
     let sheet: Sheet = {
       ...this.form.value,
+      eventTime: new Date(this.form.value.eventTime).getTime(),
       ownerId: this.user.uid,
       ownerName: this.user.username,
       participants: 0,

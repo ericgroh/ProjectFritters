@@ -37,7 +37,9 @@ export class SheetService {
   }
 
   getAvailableSheets(): AngularFirestoreCollection<Sheet> {
-    return this.afs.collection<Sheet>("sheets", ref => ref.where(`isPublic`, `==`, true).where(`status`, `==`, Status.Finalized));
+    return this.afs.collection<Sheet>("sheets", ref => ref.where(`isPublic`, `==`, true)
+      .where(`status`, `==`, Status.Finalized)
+      .where(`eventTime`, `>`, new Date().getTime()));
   }
 
   getCurrentUserSheets(): AngularFirestoreCollection<Sheet> {
@@ -94,7 +96,7 @@ export class SheetService {
             tieBreakerScore: 0,
             score: 0,
             rank: -1,
-            updatedAt: new Date().toISOString()
+            updatedAt: new Date().getTime()
           };
           batch.set(this.afs.collection("entries").doc(id).ref, entry);
 
@@ -128,7 +130,7 @@ export class SheetService {
   }
 
   updateEntry(entry: Entry) {
-    entry.updatedAt = new Date().toISOString();
+    entry.updatedAt = new Date().getTime();
     return this.afs.collection<Entry>("entries").doc(entry.id).update(entry)
   }
 
@@ -137,7 +139,6 @@ export class SheetService {
   }
 
   getEntries(sheetId: string): AngularFirestoreCollection<Entry> {
-    console.log("querying collection");
     return this.afs.collection<Entry>("entries", ref => ref.where(`sheetId`, `==`, sheetId));
   }
 
