@@ -37,6 +37,9 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatSelectModule } from '@angular/material/select';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatChipsModule } from '@angular/material/chips';
+import { ClipboardModule } from '@angular/cdk/clipboard';
 import { CreateSheetComponent } from './pages/sheet/create/create-sheet.component';
 import { SheetComponent } from './pages/sheet/details/sheet-details.component';
 import { JoinSheetComponent } from './pages/sheet/join/join-sheet.component';
@@ -96,6 +99,10 @@ import { PropNumberComponent } from './shared/components/prop-number/prop-number
     MatIconModule,
     MatExpansionModule,
     MatProgressSpinnerModule,
+    MatRadioModule,
+    MatInputModule,
+    MatChipsModule,
+    ClipboardModule,
     ReactiveFormsModule,
     BrowserModule,
     BrowserAnimationsModule,

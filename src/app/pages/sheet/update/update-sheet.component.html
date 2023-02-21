@@ -5,7 +5,22 @@
         <p>Name: {{ sheet?.name }} </p>
         <p>Owner: {{ sheet?.ownerName }} </p>
         <p *ngIf="sheet?.status == status.Completed">Status: Completed</p>
-
+        <div *ngIf="!sheet?.isPublic">
+          <!-- <mat-form-field>
+            <mat-label>Join Link</mat-label>
+            <input matInput type="text" >
+            <button matSuffix mat-icon-button aria-label="Copy">
+              <mat-icon>content_copy</mat-icon>
+            </button>
+          </mat-form-field> -->
+          <mat-chip-list aria-label="Fish selection">
+            <mat-chip (click)="copyJoinLink()">
+              Join Link 
+              <mat-icon>content_copy</mat-icon>
+            </mat-chip>
+          </mat-chip-list>
+          
+        </div>
         <div [ngSwitch]="sheet?.status">
           <div *ngSwitchCase="status.Pending">
             <div *ngIf="props?.length > 0" cdkDropList (cdkDropListDropped)="drop($event)">
@@ -34,7 +49,7 @@
             <h2>Props</h2>
             <div class="prop" *ngFor="let prop of props">
               <div class="question">{{prop.question}}</div>
-              <div clsss="type">{{prop.type}}</div>
+              <div class="type">{{prop.type}}</div>
             </div>
             <h2>Tie Breaker</h2>
             <div class="prop tie-breaker">

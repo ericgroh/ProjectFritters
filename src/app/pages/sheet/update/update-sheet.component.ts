@@ -7,6 +7,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { map, } from 'rxjs';
 import { Prop, Sheet, Status, Choice } from 'src/app/shared/models';
 import { PropDialogComponent } from 'src/app/shared/components/prop-dialog/prop-dialog.component';
+import { Clipboard } from '@angular/cdk/clipboard';
 
 @Component({
   selector: 'app-sheet',
@@ -28,6 +29,7 @@ export class UpdateSheetComponent implements OnInit {
     private entryService: EntryService,
     public dialog: MatDialog,
     private router: Router,
+    private clipboard: Clipboard
   ) { }
 
   ngOnInit(): void {
@@ -134,7 +136,10 @@ export class UpdateSheetComponent implements OnInit {
     this.sheet.tieBreaker.answer = answer;
     this.sheetService.update(this.sheet);
     this.entryService.updateEntriesTieBreaker(this.sheet.id, answer);
+  }
 
+  copyJoinLink() {
+    this.clipboard.copy('Alphonso');
   }
 
 }

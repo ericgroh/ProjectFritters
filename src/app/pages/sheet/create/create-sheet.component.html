@@ -32,13 +32,15 @@
             <mat-step>
                 <form [formGroup]="form">
                   <ng-template matStepLabel>Visibility</ng-template>
-                  <mat-form-field appearance="fill">
                     <mat-label>Visibility</mat-label>
-                    <select matNativeControl formControlName="isPublic" required>
-                      <option value="true">Public</option>
-                      <option value="false">Private</option>
-                    </select>
-                  </mat-form-field>
+                    <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="isPublic" (change)="togglePassword($event)">
+                      <mat-radio-button class="example-radio-button" value="true">Public</mat-radio-button>
+                      <mat-radio-button class="example-radio-button" value="false">Private</mat-radio-button>
+                    </mat-radio-group>
+                    <mat-form-field class="example-full-width" *ngIf="showPassword">
+                      <mat-label>Password</mat-label>
+                      <input matInput placeholder="Password" formControlName="password">
+                    </mat-form-field>
                   <div>
                     <button mat-button matStepperPrevious>Back</button>
                     <button mat-button matStepperNext>Next</button>
