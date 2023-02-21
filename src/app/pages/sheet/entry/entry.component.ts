@@ -1,5 +1,6 @@
-import { Sheet, Entry, Choice, Answer, Prop } from 'src/app/shared/models';
-import { map, Observable } from 'rxjs';
+import { EntryService } from './../../../shared/services/entry.service';
+import { Entry, Choice, Prop } from 'src/app/shared/models';
+import { map } from 'rxjs';
 import { SheetService } from 'src/app/shared/services/sheet.service';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
@@ -19,17 +20,18 @@ export class EntryComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private readonly sheetService: SheetService,
+    private readonly entryService: EntryService,
   ) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       this.entryId = params[`id`];
 
-      this.sheetService.getEntry(this.entryId).snapshotChanges().pipe(
+      this.entryService.getEntry(this.entryId).snapshotChanges().pipe(
         map(changes => ({ ...changes.payload.data() } as Entry))
       ).subscribe(entry => this.entry = entry);
 
-      this.sheetService.getEntryProps(this.entryId).snapshotChanges().pipe(
+      this.entryService.getEntryProps(this.entryId).snapshotChanges().pipe(
         map(changes => changes.map(c => ({ ...c.payload.doc.data() } as Prop)))
       ).subscribe(props => this.props = props);
     });
@@ -37,12 +39,12 @@ export class EntryComponent implements OnInit {
 
   saveEntryPropAnswer(prop: Prop, option: Choice) {
     prop.answer = option;
-    this.sheetService.updateEntryAnswer(this.entryId, prop);
+    this.entryService.updateEntryAnswer(this.entryId, prop);
   }
 
   saveTieBreaker(option: number) {
     this.entry.tieBreaker.answer = option;
-    this.sheetService.updateEntry(this.entry);
+    this.entryService.update(this.entry);
   }
 
   convertTime(time: string): string {

@@ -1,3 +1,4 @@
+import { EntryService } from './../../../shared/services/entry.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { MatDialog } from '@angular/material/dialog';
 import { SheetService } from '../../../shared/services/sheet.service';
@@ -36,6 +37,7 @@ export class SheetComponent {
   constructor(
     private route: ActivatedRoute,
     private sheetService: SheetService,
+    private entryService: EntryService,
     private userService: UserService,
     public dialog: MatDialog,
     public router: Router
@@ -51,7 +53,7 @@ export class SheetComponent {
       this.isOwner = this.userService.getCurrentUserId() == this.sheet.ownerId
     });
 
-    this.sheetService.getEntries(this.sheetId).snapshotChanges().pipe(
+    this.entryService.getEntries(this.sheetId).snapshotChanges().pipe(
       map(changes => changes.map(c => ({ ...c.payload.doc.data() }) as Entry))
     ).subscribe(entries => {
       this.entries = entries.sort((a, b) => {
@@ -72,7 +74,7 @@ export class SheetComponent {
 
   getEntryProps(entryId: string) {
     this.props = [];
-    this.sheetService.getEntryProps(entryId).snapshotChanges().pipe(
+    this.entryService.getEntryProps(entryId).snapshotChanges().pipe(
       map(changes => changes.map(c => ({ ...c.payload.doc.data() }) as Prop))
     ).subscribe(props => {
       this.props = props;

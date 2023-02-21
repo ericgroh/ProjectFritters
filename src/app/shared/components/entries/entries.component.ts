@@ -1,3 +1,4 @@
+import { EntryService } from './../../services/entry.service';
 import { Router } from '@angular/router';
 import { Entry } from './../../models/entry';
 import { map, Observable } from 'rxjs';
@@ -14,12 +15,12 @@ export class EntriesComponent implements OnInit {
   public entries$: Observable<Entry[]>;
   displayedColumns: string[] = ['sheetName', 'time', 'score'];
   constructor(
-    private sheetService: SheetService,
+    private entryService: EntryService,
     private router: Router,
   ) { }
 
   ngOnInit(): void {
-    this.entries$ = this.sheetService.getCurrentUserEntries().snapshotChanges().pipe(
+    this.entries$ = this.entryService.getCurrentUserEntries().snapshotChanges().pipe(
       map(changes => changes.map(c => ({ ...c.payload.doc.data() } as Entry)))
     )
   }

@@ -1,5 +1,4 @@
 import { NewUserGuard } from './shared/new-user.guard';
-import { KeyComponent } from './pages/sheet/key/key.component';
 import { UpdateSheetComponent } from './pages/sheet/update/update-sheet.component';
 import { SheetComponent } from './pages/sheet/details/sheet-details.component';
 import { CreateSheetComponent } from './pages/sheet/create/create-sheet.component';
@@ -33,7 +32,6 @@ const routes: Routes = [
   { path: 'sheets/:id', component: SheetComponent, canActivate: [AngularFireAuthGuard, NewUserGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
   { path: 'sheets/:id/update', component: UpdateSheetComponent, canActivate: [AngularFireAuthGuard, NewUserGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
   { path: 'entries/:id', component: EntryComponent, canActivate: [AngularFireAuthGuard, NewUserGuard], data: { AuthGuardPipe: redirectUnauthorizedToLogin } },
-  { path: 'keys/:id', component: KeyComponent, canActivate: [AngularFireAuthGuard, NewUserGuard], data: { authGuardPipe: redirectUnauthorizedToLogin } },
 
   { path: '**', component: PageNotFoundComponent }
 ];

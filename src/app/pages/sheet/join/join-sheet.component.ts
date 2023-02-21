@@ -1,3 +1,4 @@
+import { EntryService } from './../../../shared/services/entry.service';
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { map } from 'rxjs';
@@ -15,6 +16,7 @@ export class JoinSheetComponent implements OnInit {
 
   constructor(
     private readonly sheetService: SheetService,
+    private readonly entryService: EntryService,
     private readonly router: Router
   ) {
     this.sheetService.getAvailableSheets().snapshotChanges().pipe(
@@ -27,7 +29,7 @@ export class JoinSheetComponent implements OnInit {
   }
 
   joinSheet(sheet: Sheet) {
-    let entryId = this.sheetService.join(sheet);
+    let entryId = this.entryService.create(sheet);
     this.router.navigate([`entries/${entryId}`]);
   }
 

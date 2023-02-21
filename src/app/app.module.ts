@@ -46,7 +46,6 @@ import { EntryComponent } from './pages/sheet/entry/entry.component';
 import { PropComponent } from './shared/components/prop/prop.component';
 import { PropButtonComponent } from './shared/components/prop-button/prop-button.component';
 import { EntriesComponent } from './shared/components/entries/entries.component';
-import { KeyComponent } from './pages/sheet/key/key.component';
 import { PropSelectComponent } from './shared/components/prop-select/prop-select.component';
 import { PropNumberComponent } from './shared/components/prop-number/prop-number.component';
 
@@ -74,7 +73,6 @@ import { PropNumberComponent } from './shared/components/prop-number/prop-number
     PropComponent,
     PropButtonComponent,
     EntriesComponent,
-    KeyComponent,
     PropSelectComponent,
     PropNumberComponent,
   ],

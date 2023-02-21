@@ -1,11 +1,11 @@
-import { doc } from '@angular/fire/firestore';
+import { EntryService } from './../../../shared/services/entry.service';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { MatDialog } from '@angular/material/dialog';
 import { SheetService } from '../../../shared/services/sheet.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map, pipe, Observable, tap } from 'rxjs';
-import { Prop, Sheet, Status, Choice, Entry } from 'src/app/shared/models';
+import { map, } from 'rxjs';
+import { Prop, Sheet, Status, Choice } from 'src/app/shared/models';
 import { PropDialogComponent } from 'src/app/shared/components/prop-dialog/prop-dialog.component';
 
 @Component({
@@ -25,6 +25,7 @@ export class UpdateSheetComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private sheetService: SheetService,
+    private entryService: EntryService,
     public dialog: MatDialog,
     private router: Router,
   ) { }
@@ -100,7 +101,7 @@ export class UpdateSheetComponent implements OnInit {
   saveSheetPropAnswer(prop: Prop, option: Choice) {
     prop.answer = option;
     this.sheetService.updateSheetProp(this.sheetId, prop);
-    this.sheetService.updateEntries(this.sheet.id, prop.id, prop.answer);
+    this.entryService.updateEntries(this.sheet.id, prop.id, prop.answer);
 
   }
 
@@ -132,7 +133,7 @@ export class UpdateSheetComponent implements OnInit {
   saveTieBreakerAnswer(answer: number) {
     this.sheet.tieBreaker.answer = answer;
     this.sheetService.update(this.sheet);
-    this.sheetService.updateEntriesTieBreaker(this.sheet.id, answer);
+    this.entryService.updateEntriesTieBreaker(this.sheet.id, answer);
 
   }
 
